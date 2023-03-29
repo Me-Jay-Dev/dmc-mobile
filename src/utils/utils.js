@@ -1,5 +1,5 @@
 import {Dimensions, PixelRatio, ToastAndroid} from 'react-native';
-const {fontScale, scale, width} = Dimensions.get('screen');
+export const {fontScale, scale, width, height} = Dimensions.get('screen');
 
 export const scaleFont = fontSize => {
   const scaledFontScale = fontScale > 1 ? 1 + 1 * 0.1 : 1;

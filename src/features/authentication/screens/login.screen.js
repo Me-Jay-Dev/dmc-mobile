@@ -15,13 +15,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
-import {scaleFont} from '../../../utils/utils';
-import DmcLogo from '../../../../assets/icon.png';
+import {height, scaleFont} from '../../../utils/utils';
 import {form} from '../../../utils/styles';
 
-const Login = () => {
+const LoginScreen = () => {
   const {handleSubmit, control} = useForm();
   const isLoading = false;
+
   const submitForm = async () => {
     console.log('submitted form');
   };
@@ -29,13 +29,19 @@ const Login = () => {
     <ScrollView
       style={styles.container}
       contentContainerStyle={{flexGrow: 1, flexDirection: 'column'}}>
-      <View style={{alignItems: 'center', marginBottom: 'auto'}}>
-        <DmcLogo width={width * 0.2} />
-
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Image
+          style={{width: width * 0.3, height: height * 0.18}}
+          source={require('../../../../assets/icon.png')}
+        />
         <View
           style={{
             ...form.formContainer,
-            marginTop: 30,
             justifyContent: 'center',
             alignItems: 'center',
             marginBottom: 10,
@@ -48,12 +54,11 @@ const Login = () => {
               render={({field: {onChange, onBlur, value}}) => (
                 <TextInput
                   value={value}
-                  placeholder="Email"
+                  placeholder="username"
                   onChangeText={onChange}
                   onBlur={onBlur}
                   style={{...styles.input, marginVertical: 10}}
                   selectTextOnFocus={false}
-                  keyboardType="email-address"
                 />
               )}
             />
@@ -69,10 +74,10 @@ const Login = () => {
                     onBlur={onBlur}
                     style={{...styles.input, marginBottom: 10}}
                     selectTextOnFocus={false}
-                    secureTextEntry={showPassword ? false : true}
+                    secureTextEntry={true ? false : true}
                   />
                   <Pressable
-                    onPress={() => setShowPassword(!showPassword)}
+                    onPress={() => null}
                     style={{position: 'absolute', right: 10}}>
                     <Text>show</Text>
                   </Pressable>
@@ -120,7 +125,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontFamily: 'Muli-Regular',
-    fontSize: scaleFont(15),
+    fontSize: scaleFont(18),
     backgroundColor: 'white',
     borderColor: '#707070',
     borderStyle: 'solid',
@@ -129,9 +134,9 @@ const styles = StyleSheet.create({
     height: 40,
     color: '#707070',
     padding: 10,
-    marginBottom: 10,
-    width: width * 0.78,
+    marginBottom: 20,
+    width: width * 0.5,
   },
 });
 
-export default Login;
+export default LoginScreen;
