@@ -1,13 +1,16 @@
 import React from 'react';
-import {AppNavigator} from './app.navigator';
-import {NavigationContainer} from '@react-navigation/native';
+import AppNavigator from './app.navigator';
 import AuthNavigator from './auth.navigator';
-export const Navigation = () => {
-  const {isAuthenticated} = false;
+import {NavigationContainer} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
+export const Navigation = () => {
+  const is_authenticated = useSelector(
+    state => state.authReducer.is_authenticated,
+  );
   return (
     <NavigationContainer>
-      {isAuthenticated ? <AppNavigator /> : <AuthNavigator />}
+      {is_authenticated ? <AppNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };

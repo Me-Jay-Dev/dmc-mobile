@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {scaleFont} from './utils';
+import {scaleFont, verticalScale} from './utils';
 export const form = StyleSheet.create({
   modalFormContainer: {
     marginVertical: 10,
@@ -7,8 +7,8 @@ export const form = StyleSheet.create({
     justifyContent: 'center',
   },
   formContainer: {
-    marginBottom: 20,
-    marginHorizontal: 40,
+    marginBottom: 40,
+    marginVertical: verticalScale(80),
     justifyContent: 'center',
   },
   formVerticalSpacing: {

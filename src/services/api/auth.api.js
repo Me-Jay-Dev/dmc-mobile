@@ -1,21 +1,21 @@
-import Constants from 'expo-constants';
-
-const BASE_URI = Constants.expoConfig.extra.base_uri;
-// const API_KEY = Constants.expoConfig.extra.api_key
+const BASE_URI = '3.0.112.130';
 
 // Login
 export function* userLogin(payload) {
   const {username, password} = payload;
   console.log('Payload sent: ', payload);
   return yield fetch(
-    `${BASE_URI}/api/v1/login?username=${username}&password=${password}`,
+    `http://3.0.112.130/api/v1/login?username=${username}&password=${password}`,
     {
       method: 'POST',
-      body: JSON.stringify(payload),
+      body: payload,
     },
   )
     .then(response => response.json())
-    .catch(error => ({error}));
+    .catch(error => {
+      console.log('error', error);
+      return error;
+    });
 }
 
 // Logout
