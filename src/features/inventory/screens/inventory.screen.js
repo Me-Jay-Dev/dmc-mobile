@@ -2,6 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import DataTable, {COL_TYPES} from 'react-native-datatable-component';
 import {height, scaleFont, width, windowWidth} from '../../../utils/utils';
+import {form} from '../../../utils/styles';
 
 const tableData = [
   {
@@ -261,12 +262,11 @@ const InventoryScreen = () => {
         colNames={columnNames} //List of Strings
         colSettings={columnSettings} //List of Objects
         noOfPages={1} //number
-        doHighlight={{doHighlight: 'green'}}
         backgroundColor={'rgb(249,249,249)'} //Table Background Color
         headerLabelStyle={{
-          color: 'black',
-          fontSize: scaleFont(15),
+          ...form.formLabel,
           fontWeight: 'bold',
+          color: 'black',
         }} //Text Style Works
       />
     </View>

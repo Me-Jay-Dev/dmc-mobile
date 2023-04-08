@@ -1,10 +1,7 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {Appearance, Button, Text} from 'react-native';
-// import {Button} from 'react-native-paper';
 import HomeScreen from '../features/home/screens/home.screen';
-// import TabBarIcon from '../components/appdrawer/TabBarIcon';
 import TabBarIcon from '../components/appdrawer/TabBarIcon';
-import {horizontalScale, scaleFont, width} from '../utils/utils';
 import InventoryScreen from '../features/inventory/screens/inventory.screen';
 import CustomMenu from '../components/menu/menu.component';
 import CustomDrawer from '../components/appdrawer/CustomDrawer';
@@ -37,7 +34,7 @@ const MainTabs = () => {
           //   //   // icon="camera"
           //   //   mode="contained"
           //   //   onPress={null}
-          //   //   labelStyle={{fontSize: scaleFont(20)}}
+          //   //   labelStyle={{fontSize: scaleFont(15)}}
           //   //   style={{
           //   //     width: width * 0.25,
           //   //     padding: horizontalScale(10),

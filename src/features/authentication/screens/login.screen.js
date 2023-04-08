@@ -49,7 +49,11 @@ const LoginScreen = () => {
           alignItems: 'center',
         }}>
         <Image
-          style={{width: width * 0.3, height: height * 0.18}}
+          style={{
+            width: width * 0.25,
+            height: height * 0.1,
+            // backgroundColor: 'red',
+          }}
           source={require('../../../../assets/icon.png')}
         />
         <View
@@ -118,7 +122,9 @@ const LoginScreen = () => {
               // icon="camera"
               mode="contained"
               onPress={handleSubmit(submitForm)}
-              labelStyle={{fontSize: scaleFont(20)}}
+              labelStyle={{
+                fontSize: scaleFont(18),
+              }}
               style={{
                 width: width * 0.25,
                 padding: horizontalScale(10),
@@ -142,7 +148,7 @@ const styles = StyleSheet.create({
 
   input: {
     fontFamily: 'Muli-Regular',
-    fontSize: scaleFont(20),
+    fontSize: scaleFont(16),
     backgroundColor: 'white',
     borderColor: '#707070',
     borderStyle: 'solid',
@@ -151,7 +157,7 @@ const styles = StyleSheet.create({
     height: horizontalScale(50),
     color: '#707070',
     paddingLeft: horizontalScale(30),
-    marginBottom: horizontalScale(40),
+    marginBottom: horizontalScale(10),
     width: width * 0.5,
   },
 });

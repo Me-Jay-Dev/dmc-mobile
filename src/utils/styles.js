@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {scaleFont, verticalScale} from './utils';
+import {height, scaleFont, verticalScale, width} from './utils';
+
 export const form = StyleSheet.create({
   modalFormContainer: {
     marginVertical: 10,
@@ -8,7 +9,7 @@ export const form = StyleSheet.create({
   },
   formContainer: {
     marginBottom: 40,
-    marginVertical: verticalScale(80),
+    marginVertical: verticalScale(60),
     justifyContent: 'center',
   },
   formVerticalSpacing: {
@@ -21,22 +22,20 @@ export const form = StyleSheet.create({
     marginTop: 10,
   },
   formLabel: {
-    fontFamily: 'Muli-Bold',
     color: '#000000',
     fontSize: scaleFont(15),
     textAlign: 'left',
-    paddingBottom: 10,
   },
   formSubLabel: {
     fontFamily: 'Muli-Regular',
     color: '#434343',
-    fontSize: 18,
+    fontSize: scaleFont(16),
     textAlign: 'left',
     paddingBottom: 10,
   },
   formWarning: {
     fontFamily: 'Muli-Bold',
-    fontSize: scaleFont(15),
+    fontSize: scaleFont(16),
     color: '#FF0F0F',
     textAlign: 'left',
     letterSpacing: 0,
@@ -78,7 +77,7 @@ export const form = StyleSheet.create({
 
   textInput: {
     fontFamily: 'Muli-Bold',
-    fontSize: scaleFont(15),
+    fontSize: scaleFont(16),
     borderColor: '#707070',
     borderStyle: 'solid',
     borderWidth: 1,
@@ -91,7 +90,7 @@ export const form = StyleSheet.create({
   },
   textInputDisabled: {
     fontFamily: 'Muli-Bold',
-    fontSize: scaleFont(15),
+    fontSize: scaleFont(16),
     borderColor: '#BCBCBC',
     backgroundColor: '#DEDEDE',
     borderStyle: 'solid',
@@ -102,5 +101,15 @@ export const form = StyleSheet.create({
     padding: 10,
     height: 40,
     paddingLeft: 20,
+  },
+});
+
+export const globalStyles = StyleSheet.create({
+  rowDirection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    margin: 5,
+    backgroundColor: 'rgb(249,249,249)',
   },
 });
