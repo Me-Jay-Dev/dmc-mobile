@@ -37,10 +37,12 @@ const LoginScreen = () => {
     console.log('submitted form', payload.username);
     dispatch(userLogin({username: username, password: password}));
   };
-
+  console.log('height', height);
+  console.log('width', width);
   return (
     <ScrollView
       style={styles.container}
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={{flexGrow: 1, flexDirection: 'column'}}>
       <View
         style={{
@@ -50,8 +52,8 @@ const LoginScreen = () => {
         }}>
         <Image
           style={{
-            width: width * 0.25,
-            height: height * 0.1,
+            width: height >= 400 ? width * 0.5 : width * 0.3,
+            height: height >= 400 ? width * 0.2 : width * 0.1,
             // backgroundColor: 'red',
           }}
           source={require('../../../../assets/icon.png')}
@@ -122,11 +124,28 @@ const LoginScreen = () => {
               // icon="camera"
               mode="contained"
               onPress={handleSubmit(submitForm)}
+              contentStyle={{
+                alignSelf: 'center',
+                textAlignVertical: 'center',
+                textAlign: 'center',
+                width: height <= 400 ? width * 0.2 : width * 0.3,
+              }}
               labelStyle={{
-                fontSize: scaleFont(18),
+                alignSelf: 'center',
+                textAlignVertical: 'center',
+                textAlign: 'center',
+                fontSize:
+                  height >= width
+                    ? scaleFont(14)
+                    : height <= 400
+                    ? scaleFont(14)
+                    : scaleFont(20),
               }}
               style={{
-                width: width * 0.25,
+                alignSelf: 'center',
+                textAlignVertical: 'center',
+                textAlign: 'center',
+                width: height <= 400 ? width * 0.3 : width * 0.4,
                 padding: horizontalScale(10),
                 backgroundColor: 'black',
               }}>
@@ -148,7 +167,12 @@ const styles = StyleSheet.create({
 
   input: {
     fontFamily: 'Muli-Regular',
-    fontSize: scaleFont(16),
+    fontSize:
+      height >= width
+        ? scaleFont(14)
+        : height <= 400
+        ? scaleFont(14)
+        : scaleFont(20),
     backgroundColor: 'white',
     borderColor: '#707070',
     borderStyle: 'solid',

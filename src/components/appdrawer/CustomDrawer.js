@@ -13,8 +13,12 @@ import {
 } from '@react-navigation/drawer';
 import {height, scaleFont, width} from '../../utils/utils';
 import TabBarIcon from './TabBarIcon';
+import {useDispatch} from 'react-redux';
+import {USER_LOGOUT} from '../../utils/constants';
+import {userLogout} from '../../services/actions/auth.action';
 
 const CustomDrawer = props => {
+  const dispatch = useDispatch();
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={{flex: 1}}>
       <View
@@ -52,7 +56,7 @@ const CustomDrawer = props => {
             justifyContent: 'flex-end',
           }}>
           <TouchableOpacity
-            onPress={null}
+            onPress={async () => dispatch(userLogout())}
             style={{
               flexDirection: 'row',
               alignItems: 'center',

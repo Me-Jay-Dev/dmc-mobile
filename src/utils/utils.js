@@ -1,6 +1,8 @@
 import {Dimensions, PixelRatio, ToastAndroid} from 'react-native';
 import Toast from 'react-native-toast-message';
-export const {fontScale, scale, width, height} = Dimensions.get('screen');
+export const {fontScale, scale} = Dimensions.get('screen');
+export const {width, height} = Dimensions.get('window');
+
 //Guideline sizes are based on standard ~5" screen mobile device
 const guidelineBaseWidth = 912;
 const guidelineBaseHeight = 1368;

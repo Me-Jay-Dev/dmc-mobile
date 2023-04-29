@@ -5,6 +5,8 @@ import {
   USER_LOGIN_ERROR,
   USER_LOGIN_COMPLETED,
   USER_LOGIN,
+  USER_LOGOUT_COMPLETED,
+  USER_LOGOUT,
 } from '../../utils/constants';
 import {toastAlert} from '../../utils/utils';
 
@@ -35,4 +37,11 @@ export function* loginUserAsync(action) {
 
 export function* loginUser() {
   yield takeEvery(USER_LOGIN, loginUserAsync);
+}
+export function* logoutUserAsync() {
+  yield put({type: USER_LOGOUT_COMPLETED});
+}
+
+export function* logoutUser() {
+  yield takeEvery(USER_LOGOUT, logoutUserAsync);
 }

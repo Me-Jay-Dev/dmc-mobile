@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 export const sortByData = ({type, isAscending, data}) => {
+  console.log('type', type);
   if (type === 'date') {
     if (isAscending === 'ascending') {
       data.sort(
@@ -9,7 +10,7 @@ export const sortByData = ({type, isAscending, data}) => {
 
       return data;
     }
-    data.sort(
+    return data.sort(
       (a, b) => moment(b.date, 'MM-DD-YYYY') - moment(a.date, 'MM-DD-YYYY'),
     );
   } else {

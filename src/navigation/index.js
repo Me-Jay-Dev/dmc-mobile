@@ -10,7 +10,7 @@ export const Navigation = () => {
   );
   return (
     <NavigationContainer>
-      {is_authenticated ? <AppNavigator /> : <AuthNavigator />}
+      {!is_authenticated ? <AppNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };

@@ -15,28 +15,32 @@ const FilterData = ({
   type,
   ascending,
 }) => {
+  console.log('height', height);
+  console.log('width', width);
+
   return (
     <View style={globalStyles.rowDirection}>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
-        <View style={{...globalStyles.rowDirection, marginRight: 50}}>
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={true}
+        contentContainerStyle={{justifyContent: 'space-between'}}>
+        <View style={{...globalStyles.rowDirection, marginRight: 20}}>
           <Text style={{...form.formLabel}}>Date From:</Text>
-
           <CustomDatePicker
             dateValue={dateFrom}
             setDateValue={value => {
-              console.log('value', value);
               setDateFrom(value);
             }}
           />
         </View>
-        <View style={{...globalStyles.rowDirection, marginRight: 50}}>
+        <View style={{...globalStyles.rowDirection, marginRight: 20}}>
           <Text style={{...form.formLabel}}>Date To:</Text>
           <CustomDatePicker
             dateValue={dateTo}
             setDateValue={value => setDateTo(value)}
           />
         </View>
-        <View style={{...globalStyles.rowDirection, marginRight: 50}}>
+        <View style={{...globalStyles.rowDirection, marginRight: 20}}>
           <Text style={{...form.formLabel}}>Sort By:</Text>
           <RNPickerSelect
             value={type}
@@ -48,7 +52,7 @@ const FilterData = ({
             style={pickerSelectStyles}
           />
         </View>
-        <View style={{...globalStyles.rowDirection, marginRight: 50}}>
+        <View style={{...globalStyles.rowDirection, marginRight: 20}}>
           <Text style={{...form.formLabel}}>Sort By:</Text>
           <RNPickerSelect
             value={ascending}
@@ -69,7 +73,12 @@ export default FilterData;
 
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
-    fontSize: scaleFont(16),
+    fontSize:
+      height >= width
+        ? scaleFont(18)
+        : height <= 400
+        ? scaleFont(18)
+        : scaleFont(22),
     paddingVertical: 12,
     paddingHorizontal: 10,
     borderWidth: 1,
@@ -81,16 +90,20 @@ const pickerSelectStyles = StyleSheet.create({
   },
   inputAndroid: {
     paddingLeft: 20,
-    marginTop: width <= 400 ? 0 : 10,
+    marginTop: height >= width ? 10 : height <= 400 ? 0 : 10,
     borderWidth: 1,
     borderColor: '#707070',
     borderStyle: 'solid',
     color: '#000000',
     borderRadius: 10,
-    alignSelf: 'center',
     fontFamily: 'Muli-Bold',
     width: 200,
     transform: [{scaleX: 1.1}, {scaleY: 1.1}],
-    fontSize: scaleFont(16),
+    fontSize:
+      height >= width
+        ? scaleFont(18)
+        : height <= 400
+        ? scaleFont(18)
+        : scaleFont(22),
   },
 });

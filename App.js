@@ -1,5 +1,12 @@
 import 'react-native-gesture-handler';
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {
+  LogBox,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React from 'react';
 import Toast, {BaseToast, ErrorToast} from 'react-native-toast-message';
 import {Provider as PaperProvider} from 'react-native-paper';
@@ -7,6 +14,7 @@ import {Navigation} from './src/navigation';
 import {Provider} from 'react-redux';
 import configureStore from './src/services/reducers/index';
 import rootSaga from './src/services/saga';
+import {height, scaleFont, width} from './src/utils/utils';
 const {store, runSaga} = configureStore();
 runSaga(rootSaga);
 const toastConfig = {
@@ -16,11 +24,21 @@ const toastConfig = {
       style={{borderLeftColor: 'pink'}}
       contentContainerStyle={{paddingHorizontal: 15}}
       text1Style={{
-        fontSize: 20,
+        fontSize:
+          height >= width
+            ? scaleFont(16)
+            : height <= 400
+            ? scaleFont(16)
+            : scaleFont(22),
         fontWeight: '400',
       }}
       text2Style={{
-        fontSize: 15,
+        fontSize:
+          height >= width
+            ? scaleFont(14)
+            : height <= 400
+            ? scaleFont(14)
+            : scaleFont(20),
         fontWeight: '400',
       }}
     />
@@ -30,10 +48,20 @@ const toastConfig = {
     <ErrorToast
       {...props}
       text1Style={{
-        fontSize: 17,
+        fontSize:
+          height >= width
+            ? scaleFont(16)
+            : height <= 400
+            ? scaleFont(16)
+            : scaleFont(22),
       }}
       text2Style={{
-        fontSize: 15,
+        fontSize:
+          height >= width
+            ? scaleFont(14)
+            : height <= 400
+            ? scaleFont(14)
+            : scaleFont(20),
       }}
     />
   ),
@@ -48,6 +76,7 @@ const toastConfig = {
 //   },
 // };
 const App = () => {
+  LogBox.ignoreLogs(['Invalid prop textStyle of type array supplied to Cell']);
   return (
     <Provider store={store}>
       <PaperProvider>

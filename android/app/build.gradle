@@ -112,6 +112,12 @@ android {
         }
     }
     signingConfigs {
+        release {
+        storeFile file('your_key_name.keystore')
+        storePassword 'dmc2023'
+        keyAlias ''
+        keyPassword 'dmc2023'
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -121,6 +127,7 @@ android {
     }
     buildTypes {
         debug {
+            signingConfig signingConfigs.release
             signingConfig signingConfigs.debug
         }
         release {

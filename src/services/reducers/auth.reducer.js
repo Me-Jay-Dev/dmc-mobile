@@ -3,6 +3,8 @@ import {
   USER_LOGIN_COMPLETED,
   USER_LOGIN_ERROR,
   USER_LOGIN_REQUEST,
+  USER_LOGOUT,
+  USER_LOGOUT_COMPLETED,
 } from '../../utils/constants';
 
 const INITIAL_STATE = {
@@ -25,6 +27,8 @@ export default reducer = (state = INITIAL_STATE, action) => {
         is_authenticated: true,
         isLoading: false,
       };
+    case USER_LOGOUT_COMPLETED:
+      return INITIAL_STATE;
     default:
       return state;
   }

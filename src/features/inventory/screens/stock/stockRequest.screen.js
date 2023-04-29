@@ -13,8 +13,9 @@ import FilterData from '../../../../components/filter/filter.component';
 import CustomTable from '../../../../components/customTable/customTable.component';
 import {height, width} from '../../../../utils/utils';
 import {sortByData} from '../../../../utils/hooks/data.hooks';
+import {globalStyles} from '../../../../utils/styles';
 
-const tableHead = ['Status', 'Date', 'Transaction No.', 'Σ SKU', 'ΣQTY'];
+const tableHead = ['Status', 'Date', 'Transaction No.', 'Σ SKU', 'Σ QTY'];
 const tableData = [
   {
     Status: 'submitted',
@@ -111,6 +112,7 @@ const StockRequestScreen = () => {
   const [type, setType] = useState('date');
   const [rowData, setRowData] = useState(tableData);
   const [ascending, setAscending] = useState('ascending');
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   useEffect(() => {
     const startDate = moment(dateFrom, 'MM-DD-YYYY');
@@ -123,12 +125,20 @@ const StockRequestScreen = () => {
       return date.isSameOrAfter(startDate) && date.isSameOrBefore(endDate);
     });
 
-    const data = sortByData({isAscending: ascending, data: filteredDates});
+    const data = sortByData({
+      type: type,
+      isAscending: ascending,
+      data: filteredDates,
+    });
     setRowData(data);
-  }, [dateFrom, dateTo, ascending]);
+  }, [dateFrom, dateTo, ascending, type]);
 
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        ...globalStyles.tableContainer,
+        backgroundColor: 'rgb(249,249,249)',
+      }}>
       <FilterData
         setDateFrom={setDateFrom}
         setDateTo={setDateTo}
@@ -139,7 +149,12 @@ const StockRequestScreen = () => {
         type={type}
         ascending={ascending}
       />
-      <CustomTable tableHead={tableHead} rowData={rowData} />
+      <CustomTable
+        tableHead={tableHead}
+        rowData={rowData}
+        filterElement="Status"
+        tableElement={'text'}
+      />
     </View>
   );
 };
@@ -148,7 +163,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: height <= 400 ? height * 0.5 : height * 0.52,
-    backgroundColor: 'rgb(249,249,249)',
   },
 });
 

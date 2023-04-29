@@ -22,7 +22,7 @@ const Search = ({setText, text, searchDescription, selectedItem}) => {
             backgroundColor: 'transparent',
             borderRadius: 20,
           }}
-          style={{width: '80%'}}
+          style={{width: '70%', ...form.formLabel}}
           onChangeText={text => {
             setText(text);
             searchDescription(text);

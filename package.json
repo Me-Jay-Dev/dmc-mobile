@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.15",
     "@react-native-masked-view/masked-view": "^0.2.8",
     "@react-native-picker/picker": "^2.4.9",
     "@react-navigation/drawer": "^6.6.2",
@@ -23,7 +24,6 @@
     "react-native-date-picker": "^4.2.10",
     "react-native-device-info": "^10.4.0",
     "react-native-gesture-handler": "^2.9.0",
-    "react-native-imei": "^0.2.0",
     "react-native-paper": "^5.5.2",
     "react-native-picker-select-gian": "^0.1.0",
     "react-native-reanimated": "^3.0.2",

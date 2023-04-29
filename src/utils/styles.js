@@ -23,19 +23,34 @@ export const form = StyleSheet.create({
   },
   formLabel: {
     color: '#000000',
-    fontSize: scaleFont(15),
+    fontSize:
+      height >= width
+        ? scaleFont(14)
+        : height <= 400
+        ? scaleFont(14)
+        : scaleFont(20),
     textAlign: 'left',
   },
   formSubLabel: {
     fontFamily: 'Muli-Regular',
     color: '#434343',
-    fontSize: scaleFont(16),
+    fontSize:
+      height >= width
+        ? scaleFont(14)
+        : height <= 400
+        ? scaleFont(14)
+        : scaleFont(20),
     textAlign: 'left',
     paddingBottom: 10,
   },
   formWarning: {
     fontFamily: 'Muli-Bold',
-    fontSize: scaleFont(16),
+    fontSize:
+      height >= width
+        ? scaleFont(14)
+        : height <= 400
+        ? scaleFont(14)
+        : scaleFont(20),
     color: '#FF0F0F',
     textAlign: 'left',
     letterSpacing: 0,
@@ -77,7 +92,12 @@ export const form = StyleSheet.create({
 
   textInput: {
     fontFamily: 'Muli-Bold',
-    fontSize: scaleFont(16),
+    fontSize:
+      height >= width
+        ? scaleFont(14)
+        : height <= 400
+        ? scaleFont(14)
+        : scaleFont(20),
     borderColor: '#707070',
     borderStyle: 'solid',
     borderWidth: 1,
@@ -90,7 +110,12 @@ export const form = StyleSheet.create({
   },
   textInputDisabled: {
     fontFamily: 'Muli-Bold',
-    fontSize: scaleFont(16),
+    fontSize:
+      height >= width
+        ? scaleFont(14)
+        : height <= 400
+        ? scaleFont(14)
+        : scaleFont(20),
     borderColor: '#BCBCBC',
     backgroundColor: '#DEDEDE',
     borderStyle: 'solid',
@@ -105,6 +130,13 @@ export const form = StyleSheet.create({
 });
 
 export const globalStyles = StyleSheet.create({
+  tableContainer: {
+    flex: 1,
+    // height: height >= width ? '80%' : height >= 400 ? '95%' : '80%',
+    // height: '100%',
+    backgroundColor: 'rgb(249,249,249)',
+    // padding: 20,
+  },
   rowDirection: {
     flexDirection: 'row',
     alignItems: 'center',

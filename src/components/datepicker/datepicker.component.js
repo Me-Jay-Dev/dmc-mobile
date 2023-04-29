@@ -11,7 +11,7 @@ import {
 import DatePicker from 'react-native-date-picker';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {form} from '../../utils/styles';
-import {horizontalScale} from '../../utils/utils';
+import {height, horizontalScale, scaleFont, width} from '../../utils/utils';
 
 const CustomDatePicker = ({dateValue, setDateValue, format = 'YYYY-MM-DD'}) => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -37,7 +37,17 @@ const CustomDatePicker = ({dateValue, setDateValue, format = 'YYYY-MM-DD'}) => {
             marginLeft: 10,
           }}
           pointerEvents="none">
-          <Text style={{...form.formLabel}}>{dateValue.toDateString()}</Text>
+          <Text
+            style={{
+              fontSize:
+                height >= width
+                  ? scaleFont(12)
+                  : height <= 400
+                  ? scaleFont(12)
+                  : scaleFont(16),
+            }}>
+            {dateValue.toDateString()}
+          </Text>
           <MaterialCommunityIcons
             name="update"
             color={'black'}
