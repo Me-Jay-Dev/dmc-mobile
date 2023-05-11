@@ -16,6 +16,7 @@ export function* loginUserAsync(action) {
     yield put({type: USER_LOGIN_REQUEST});
 
     const response = yield call(userLogin, action.payload);
+
     if (response !== undefined && !response.success) {
       yield put({type: USER_LOGIN_ERROR});
       if (response.error !== undefined) {
@@ -27,7 +28,7 @@ export function* loginUserAsync(action) {
         yield call(toastAlert({type: 'error', message: response.message}));
       }
     } else {
-      yield put({type: USER_LOGIN_COMPLETED, response});
+      yield put({type: USER_LOGIN_COMPLETED, payload: response?.data});
     }
     // console.log(response);
   } catch (error) {

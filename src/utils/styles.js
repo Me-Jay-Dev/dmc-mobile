@@ -140,6 +140,7 @@ export const globalStyles = StyleSheet.create({
   rowDirection: {
     flexDirection: 'row',
     alignItems: 'center',
+    alignContent: 'center',
     justifyContent: 'space-between',
     margin: 5,
     backgroundColor: 'rgb(249,249,249)',

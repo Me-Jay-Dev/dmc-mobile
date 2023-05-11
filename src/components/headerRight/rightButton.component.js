@@ -21,7 +21,7 @@ const RightButton = () => {
         Request
       </Text>
       <TouchableWithoutFeedback
-        onPress={() => navigation.navigate('StockItemList')}>
+        onPress={() => navigation.navigate('StockRequest')}>
         <MaterialCommunityIcons
           name="arrow-right"
           color={'black'}

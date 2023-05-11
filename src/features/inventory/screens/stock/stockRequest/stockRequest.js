@@ -1,12 +1,12 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
 import DataTable, {COL_TYPES} from 'react-native-datatable-component';
-import {form, globalStyles} from '../../../../utils/styles';
-import Search from '../../../../components/search/search.component';
-import CustomTable from '../../../../components/customTable/customTable.component';
+import {form, globalStyles} from '../../../../../utils/styles';
+import Search from '../../../../../components/search/search.component';
+import CustomTable from '../../../../../components/customTable/customTable.component';
 import {useIsFocused} from '@react-navigation/native';
 
-const StockItemListScreen = () => {
+const StockRequestScreen = () => {
   const tableData = [
     {
       id: 1,
@@ -95,8 +95,14 @@ const StockItemListScreen = () => {
   const [selectedItem, setSelectedItem] = useState([]);
 
   useEffect(() => {
+    // setItem(tableData);
+    console.log("SELECTEDITEM",selectedItem)
+    searchDescription(text)
+  }, [setSelectedItem,selectedItem]);
+  
+  useEffect(() => {
     setItem(tableData);
-    setSelectedItem([]);
+    setSelectedItem([])
   }, [isFocused]);
   const checkItem = async selectedRow => {
     let newCheck = selectedItem;
@@ -130,9 +136,13 @@ const StockItemListScreen = () => {
   };
 
   const searchDescription = searchText => {
+    console.log("selectedItem",selectedItem)
+
+    let selectedItems = selectedItem;
+
     const updatedTableData = tableData
       .map(item => {
-        const selectedItemFound = selectedItem.find(
+        const selectedItemFound = selectedItems.find(
           selected => selected.id === item.id,
         );
         if (selectedItemFound && item.description.includes(searchText)) {
@@ -149,6 +159,8 @@ const StockItemListScreen = () => {
       })
       .filter(item => item.description.includes(searchText));
     setItem(updatedTableData);
+    console.log("selectedItem1",selectedItem)
+
   };
   console.log('rowadata', item.length);
   return (
@@ -163,6 +175,7 @@ const StockItemListScreen = () => {
         searchDescription={searchDescription}
         selectedItem={selectedItem}
       />
+
       <CustomTable
         tableHead={columnNames}
         rowData={item}
@@ -188,6 +201,6 @@ const StockItemListScreen = () => {
   );
 };
 
-export default StockItemListScreen;
+export default StockRequestScreen;
 
 const styles = StyleSheet.create({});

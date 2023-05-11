@@ -11,11 +11,12 @@ import {
 import {horizontalScale, scaleFont} from '../utils/utils';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import RightButton from '../components/headerRight/rightButton.component';
-import StockRequestScreen from '../features/inventory/screens/stock/stockRequest.screen';
-import StockItemListScreen from '../features/inventory/screens/stock/stockItemList.screen';
-import StockSelectedItemListScreen from '../features/inventory/screens/stock/stockSelectedItemList.screen';
+import StockSelectedItemListScreen from '../features/inventory/screens/stock/stockRequest/stockSelectedItemList.screen';
 import {Button} from 'react-native-paper';
 import {form} from '../utils/styles';
+import CustomMenu from '../components/menu/menu.component';
+import StockRequestScreen from '../features/inventory/screens/stock/stockRequest/stockRequest';
+import StockItemListScreen from '../features/inventory/screens/stock/stockItemList';
 
 const Stack = createStackNavigator();
 const AppNavigator = () => (
@@ -30,18 +31,17 @@ const AppNavigator = () => (
         headerShown: false,
       }}
     />
-    <Stack.Screen
-      name="StockRequest"
-      component={StockRequestScreen}
-      options={{
-        headerShown: true,
 
-        headerRight: () => <RightButton />,
-      }}
-    />
     <Stack.Screen
       name="StockItemList"
       component={StockItemListScreen}
+      options={{
+        headerShown: true,
+      }}
+    />
+    <Stack.Screen
+      name="StockRequest"
+      component={StockRequestScreen}
       options={({navigation, route}) => ({
         headerShown: true,
         headerTitle: '',
@@ -53,7 +53,9 @@ const AppNavigator = () => (
               marginLeft: 10,
             }}>
             <TouchableWithoutFeedback
-              onPress={() => navigation.navigate('StockRequest')}>
+              onPress={() =>
+                navigation.navigate('StockItemList', {isStockTransfer: false})
+              }>
               <MaterialCommunityIcons
                 name="arrow-left"
                 color={'black'}
@@ -194,7 +196,9 @@ const AppNavigator = () => (
               marginLeft: 10,
             }}>
             <TouchableWithoutFeedback
-              onPress={() => navigation.navigate('StockItemList')}>
+              onPress={() =>
+                navigation.navigate('StockRequest', {isStockTransfer: false})
+              }>
               <MaterialCommunityIcons
                 name="arrow-left"
                 color={'black'}
@@ -224,7 +228,9 @@ const AppNavigator = () => (
             }}>
             <Button
               mode="contained"
-              onPress={() => null}
+              onPress={() =>
+                navigation.navigate('Inventory', {isStockTransfer: false})
+              }
               labelStyle={{
                 fontSize: 20,
               }}

@@ -24,8 +24,6 @@ const CustomDatePicker = ({dateValue, setDateValue, format = 'YYYY-MM-DD'}) => {
   return (
     <View>
       <TouchableOpacity
-        delayPressIn={0}
-        activeOpacity={1.0}
         onPress={() => {
           setShowCalendar(true);
           Keyboard.dismiss();
@@ -35,8 +33,7 @@ const CustomDatePicker = ({dateValue, setDateValue, format = 'YYYY-MM-DD'}) => {
             flexDirection: 'row',
             alignItems: 'center',
             marginLeft: 10,
-          }}
-          pointerEvents="none">
+          }}>
           <Text
             style={{
               fontSize:

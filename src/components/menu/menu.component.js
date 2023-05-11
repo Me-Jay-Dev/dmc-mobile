@@ -39,12 +39,19 @@ const MenuItem = ({isFrom, closeMenu, navigation}) => {
         {isFrom === 'Inventory'}
         <Menu.Item
           onPress={() => {
-            navigation.navigate('StockRequest');
+            navigation.navigate('StockItemList', {isStockTransfer: false});
             closeMenu();
           }}
           title="Stock Request"
         />
-        <Menu.Item onPress={() => {}} title="Stock Transfer" />
+        <Menu.Item
+          onPress={() => {
+            navigation.navigate('StockItemList', {isStockTransfer: true});
+            closeMenu();
+          }}
+          title="Stock Transfer"
+        />
+        <Menu.Item onPress={() => {}} title="Physical Count" />
       </>
     );
   }
@@ -53,7 +60,7 @@ const MenuItem = ({isFrom, closeMenu, navigation}) => {
       {isFrom === 'Inventory'}
       <Menu.Item onPress={() => {}} title="Stock Load-In" />
       <Menu.Item onPress={() => {}} title="Stock Load-Out" />
-      {/* <Menu.Item onPress={() => {}} title="Panel Transfer" /> */}
+      <Menu.Item onPress={() => {}} title="Panel Transfer" />
     </>
   );
 };

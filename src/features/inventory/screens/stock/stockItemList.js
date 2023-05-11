@@ -14,6 +14,8 @@ import CustomTable from '../../../../components/customTable/customTable.componen
 import {height, width} from '../../../../utils/utils';
 import {sortByData} from '../../../../utils/hooks/data.hooks';
 import {globalStyles} from '../../../../utils/styles';
+import CustomMenu from '../../../../components/menu/menu.component';
+import RightButton from '../../../../components/headerRight/rightButton.component';
 
 const tableHead = ['Status', 'Date', 'Transaction No.', 'Σ SKU', 'Σ QTY'];
 const tableData = [
@@ -104,7 +106,9 @@ const tableData = [
 //   width * 0.2,
 // ];
 
-const StockRequestScreen = () => {
+const StockItemListScreen = ({navigation, route}) => {
+  const {isStockTransfer} = route?.params;
+  console.log('ROUTEPARAMS', route?.params);
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 2);
   const [dateFrom, setDateFrom] = useState(currentDate);
@@ -113,6 +117,18 @@ const StockRequestScreen = () => {
   const [rowData, setRowData] = useState(tableData);
   const [ascending, setAscending] = useState('ascending');
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [selectedView,setSelectedView] = useState([])
+  const [isOpenView,setIsOpenView] = useState(false)
+  useEffect(() => {
+    // Set the navigation options dynamically when the component mounts
+    console.log('isStockTransfer', isStockTransfer);
+    navigation.setOptions({
+      headerTitle: isStockTransfer ? 'Stock Transfer' : 'Stock Request',
+
+      headerRight: () =>
+        isStockTransfer ? <CustomMenu isFrom="none" /> : <RightButton />,
+    });
+  }, [navigation]);
 
   useEffect(() => {
     const startDate = moment(dateFrom, 'MM-DD-YYYY');
@@ -133,6 +149,9 @@ const StockRequestScreen = () => {
     setRowData(data);
   }, [dateFrom, dateTo, ascending, type]);
 
+  useEffect(() => {
+    console.log("selectedView",selectedView)
+  },[selectedView])
   return (
     <View
       style={{
@@ -148,6 +167,11 @@ const StockRequestScreen = () => {
         setAscending={setAscending}
         type={type}
         ascending={ascending}
+        isStockTransfer={isStockTransfer}
+        selectedView={selectedView}
+        setSelectedView={setSelectedView}
+        isOpenView= {isOpenView}
+        setIsOpenView = {setIsOpenView}
       />
       <CustomTable
         tableHead={tableHead}
@@ -166,4 +190,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StockRequestScreen;
+export default StockItemListScreen;

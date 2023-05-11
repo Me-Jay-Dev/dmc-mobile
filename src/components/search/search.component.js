@@ -2,6 +2,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {TextInput} from 'react-native-paper';
 import {form} from '../../utils/styles';
+import SearchBar from 'react-native-dynamic-search-bar';
+import { height, scaleFont, width } from '../../utils/utils';
 
 const Search = ({setText, text, searchDescription, selectedItem}) => {
   return (
@@ -14,7 +16,7 @@ const Search = ({setText, text, searchDescription, selectedItem}) => {
         margin: 5,
       }}>
       <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
-        <TextInput
+        {/* <TextInput
           placeholder="Search......."
           value={text}
           mode="outlined"
@@ -27,6 +29,27 @@ const Search = ({setText, text, searchDescription, selectedItem}) => {
             setText(text);
             searchDescription(text);
           }}
+        /> */}
+        <SearchBar
+          style={{width: '70%', ...form.formLabel, borderRadius: 20}}
+          height={100}
+          fontSize={height >= width
+            ? scaleFont(14)
+            : height <= 400
+            ? scaleFont(14)
+            : scaleFont(20)}
+
+          placeholder="Search here"
+          // onPress={() => alert("onPress")}
+          onChangeText={text => {
+            setText(text);
+            searchDescription(text);
+          }}
+          onClearPress = {() => {
+            setText("");
+            searchDescription("");
+          }}
+          
         />
       </View>
 

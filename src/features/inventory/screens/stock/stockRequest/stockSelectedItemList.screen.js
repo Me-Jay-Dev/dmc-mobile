@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import CustomTable from '../../../../components/customTable/customTable.component';
-import {globalStyles} from '../../../../utils/styles';
+import CustomTable from '../../../../../components/customTable/customTable.component';
+import {globalStyles} from '../../../../../utils/styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import CustomModal from '../../../../components/modal/modal.component';
+import CustomModal from '../../../../../components/modal/modal.component';
 
 const tableData = [
   {
