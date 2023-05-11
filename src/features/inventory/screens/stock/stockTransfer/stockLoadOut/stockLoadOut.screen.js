@@ -1,12 +1,11 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useMemo, useState} from 'react';
-import DataTable, {COL_TYPES} from 'react-native-datatable-component';
-import {form, globalStyles} from '../../../../../utils/styles';
-import Search from '../../../../../components/search/search.component';
-import CustomTable from '../../../../../components/customTable/customTable.component';
+import React, {useEffect, useState} from 'react';
 import {useIsFocused} from '@react-navigation/native';
+import {globalStyles} from '../../../../../../utils/styles';
+import Search from '../../../../../../components/search/search.component';
+import CustomTable from '../../../../../../components/customTable/customTable.component';
 
-const StockRequestScreen = () => {
+const StockLoadOutScreen = () => {
   const tableData = [
     {
       id: 1,
@@ -96,13 +95,13 @@ const StockRequestScreen = () => {
 
   useEffect(() => {
     // setItem(tableData);
-    console.log("SELECTEDITEM",selectedItem)
-    searchDescription(text)
-  }, [setSelectedItem,selectedItem]);
-  
+    console.log('SELECTEDITEM', selectedItem);
+    searchDescription(text);
+  }, [setSelectedItem, selectedItem]);
+
   useEffect(() => {
     setItem(tableData);
-    setSelectedItem([])
+    setSelectedItem([]);
   }, [isFocused]);
   const checkItem = async selectedRow => {
     let newCheck = selectedItem;
@@ -136,7 +135,7 @@ const StockRequestScreen = () => {
   };
 
   const searchDescription = searchText => {
-    console.log("selectedItem",selectedItem)
+    console.log('selectedItem', selectedItem);
 
     let selectedItems = selectedItem;
 
@@ -159,47 +158,32 @@ const StockRequestScreen = () => {
       })
       .filter(item => item.description.includes(searchText));
     setItem(updatedTableData);
-    console.log("selectedItem1",selectedItem)
-
+    console.log('selectedItem1', selectedItem);
   };
+
   return (
     <View
       style={{
         ...globalStyles.tableContainer,
         backgroundColor: 'rgb(249,249,249)',
       }}>
-      <Search
+         <Search
         setText={setText}
         text={text}
         searchDescription={searchDescription}
         selectedItem={selectedItem}
       />
-
-      <CustomTable
+       <CustomTable
         tableHead={columnNames}
         rowData={item}
         filterElement="id"
         tableElement={'checkbox'}
         setToggleCheckBox={checkItem}
       />
-      {/* <DataTable
-        onRowSelect={row => checkItem(row)}
-        data={item} // list of objects
-        colNames={columnNames} //List of Strings
-        colSettings={columnSettings} //List of Objects
-        noOfPages={1} //number
-        backgroundColor={'rgb(249,249,249)'} //Table Background Color
-        headerLabelStyle={{
-          alignSelf: 'center',
-          color: 'black',
-          fontSize: height <= 400 ? scaleFont(15) : scaleFont(20),
-          fontWeight: 'bold',
-        }} //Text Style Works
-      /> */}
-    </View>
+      </View>
   );
 };
 
-export default StockRequestScreen;
+export default StockLoadOutScreen;
 
 const styles = StyleSheet.create({});
