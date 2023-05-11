@@ -17,28 +17,13 @@ import {form} from '../utils/styles';
 import CustomMenu from '../components/menu/menu.component';
 import StockRequestScreen from '../features/inventory/screens/stock/stockRequest/stockRequest';
 import StockItemListScreen from '../features/inventory/screens/stock/stockItemList';
+import StockLoadOutScreen from '../features/inventory/screens/stock/stockTransfer/stockLoadOut/stockLoadOut.screen';
+import LoadOutSelectedItemListSreen from '../features/inventory/screens/stock/stockTransfer/stockLoadOut/loadOutSeletedItemList.screen';
 
 const Stack = createStackNavigator();
-const AppNavigator = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerShown: false,
-    }}>
-    <Stack.Screen
-      name="MainTabs"
-      component={MainTabs}
-      options={{
-        headerShown: false,
-      }}
-    />
 
-    <Stack.Screen
-      name="StockItemList"
-      component={StockItemListScreen}
-      options={{
-        headerShown: true,
-      }}
-    />
+const Request = () => (
+  <Stack.Navigator>
     <Stack.Screen
       name="StockRequest"
       component={StockRequestScreen}
@@ -72,7 +57,7 @@ const AppNavigator = () => (
                 fontSize: 20,
                 fontWeight: '500',
               }}>
-              Back
+              Select Request
             </Text>
           </View>
         ),
@@ -215,7 +200,7 @@ const AppNavigator = () => (
                 fontSize: 20,
                 fontWeight: '500',
               }}>
-              Back
+              Selected Item
             </Text>
           </View>
         ),
@@ -247,6 +232,156 @@ const AppNavigator = () => (
         //   justifyContent: 'space-between',
         // },
       })}
+    />
+  </Stack.Navigator>
+);
+
+const LoadOut = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="StockLoadOut"
+      component={StockLoadOutScreen}
+      options={({navigation, route}) => ({
+        headerShown: true,
+        headerTitle: '',
+        headerLeft: () => (
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginLeft: 10,
+            }}>
+            <TouchableWithoutFeedback
+              onPress={() =>
+                navigation.navigate('StockItemList', {isStockTransfer: false})
+              }>
+              <MaterialCommunityIcons
+                name="arrow-left"
+                color={'black'}
+                size={25}
+                style={{
+                  // lineHeight: horizontalScale(50),
+                  marginRight: 25,
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableWithoutFeedback>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '500',
+              }}>
+              Select LoadOut
+            </Text>
+          </View>
+        ),
+        headerRight: () => (
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginRight: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '500',
+                textAlign: 'center',
+              }}>
+              Next
+            </Text>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate('LoadOutSelectedItemList')}>
+              <MaterialCommunityIcons
+                name="arrow-right"
+                color={'black'}
+                size={25}
+                style={{
+                  // lineHeight: horizontalScale(50),
+                  marginLeft: 30,
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableWithoutFeedback>
+          </View>
+        ),
+      })}
+    />
+    <Stack.Screen
+      name="LoadOutSelectedItemList"
+      component={LoadOutSelectedItemListSreen}
+      options={({navigation, route}) => ({
+        headerShown: true,
+        headerTitle: '',
+        headerLeft: () => (
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginLeft: 10,
+            }}>
+            <TouchableWithoutFeedback
+              onPress={() =>
+                navigation.navigate('StockItemList', {isStockTransfer: false})
+              }>
+              <MaterialCommunityIcons
+                name="arrow-left"
+                color={'black'}
+                size={25}
+                style={{
+                  // lineHeight: horizontalScale(50),
+                  marginRight: 25,
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableWithoutFeedback>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '500',
+              }}>
+              Selected LoadOut
+            </Text>
+          </View>
+        ),
+      
+      })}
+    />
+  </Stack.Navigator>
+);
+
+const AppNavigator = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}>
+    <Stack.Screen
+      name="MainTabs"
+      component={MainTabs}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="StockItemList"
+      component={StockItemListScreen}
+      options={{
+        headerShown: true,
+      }}
+    />
+    <Stack.Screen
+      name="Request"
+      component={Request}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="LoadOut"
+      component={LoadOut}
+      options={{
+        headerShown: false,
+      }}
     />
   </Stack.Navigator>
 );
