@@ -19,6 +19,7 @@ import StockRequestScreen from '../features/inventory/screens/stock/stockRequest
 import StockItemListScreen from '../features/inventory/screens/stock/stockItemList';
 import StockLoadOutScreen from '../features/inventory/screens/stock/stockTransfer/stockLoadOut/stockLoadOut.screen';
 import LoadOutSelectedItemListSreen from '../features/inventory/screens/stock/stockTransfer/stockLoadOut/loadOutSeletedItemList.screen';
+import StockLoadInScreen from '../features/inventory/screens/stock/stockTransfer/stockLoadIn/stockLoadIn.screen';
 
 const Stack = createStackNavigator();
 
@@ -235,7 +236,85 @@ const Request = () => (
     />
   </Stack.Navigator>
 );
+const LoadIn = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="StockLoadIn"
+      component={StockLoadInScreen}
+      options={({navigation, route}) => ({
+        headerShown: true,
+        headerTitle: '',
+        headerLeft: () => (
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginLeft: 10,
+            }}>
+            <TouchableWithoutFeedback
+              onPress={() =>
+                navigation.navigate('StockItemList', {isStockTransfer: false})
+              }>
+              <MaterialCommunityIcons
+                name="arrow-left"
+                color={'black'}
+                size={25}
+                style={{
+                  // lineHeight: horizontalScale(50),
+                  marginRight: 25,
+                  alignSelf: 'center',
+                }}
+              />
+            </TouchableWithoutFeedback>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '500',
+              }}>
+              StockLoadIn
+            </Text>
+          </View>
+        ),
+        headerRight: () => (
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: 10,
+              padding: 10,
+              borderRadius: 20,
+              backgroundColor: 'black',
+            }}
+            onPress={() => null}>
+            <MaterialCommunityIcons
+              name="cloud-sync-outline"
+              color={'black'}
+              size={25}
+              style={{
+                // lineHeight: horizontalScale(50),
+                alignSelf: 'center',
+                color: 'white',
+                marginLeft:10
+              }}
+            />
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '500',
+                color: 'white',
+                textAlign: 'center',
+                marginRight:10
 
+              }}>
+              SYNC
+            </Text>
+          </TouchableOpacity>
+        ),
+      })}
+    />
+  </Stack.Navigator>
+);
 const LoadOut = () => (
   <Stack.Navigator>
     <Stack.Screen
@@ -344,7 +423,6 @@ const LoadOut = () => (
             </Text>
           </View>
         ),
-      
       })}
     />
   </Stack.Navigator>
@@ -372,6 +450,13 @@ const AppNavigator = () => (
     <Stack.Screen
       name="Request"
       component={Request}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="LoadIn"
+      component={LoadIn}
       options={{
         headerShown: false,
       }}

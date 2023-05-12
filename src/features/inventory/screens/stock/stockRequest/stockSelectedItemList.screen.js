@@ -21,7 +21,7 @@ const tableData = [
   },
 ];
 const columnNames = [
-  '',
+  'Action',
   'Description',
   'Type',
   'Price',
@@ -47,8 +47,8 @@ const StockSelectedItemListScreen = () => {
       <CustomTable
         tableHead={columnNames}
         rowData={tableData}
-        tableElement="action"
         filterElement="id"
+        tableElement="Action"
         setToggleCheckBox={openModal}
       />
       <CustomModal isOpen={isOpen} setIsOpen={setIsOpen} category={category} />
