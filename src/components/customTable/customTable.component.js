@@ -13,13 +13,21 @@ import CheckBox from '@react-native-community/checkbox';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const CustomTable = ({
-  rowData,
-  tableHead,
-  filterElement,
-  tableElement,
+  rowData = [],
+  tableHead = [],
+  filterElement = "",
+  tableElement= "",
   setToggleCheckBox,
+  tableElementPosition=0,
 }) => {
-  const percentile = 100 / tableHead.length;
+  const actionPercentile =  tableElement === 'loadInAction' ? 20 : 0;
+  const length = tableElement === 'loadInAction' ? tableHead.length-1 : tableHead.length
+  const percentile = (100 - actionPercentile) / length;
+  console.log("actionPercentile",actionPercentile)
+  console.log("tableHead.length",tableHead.length-1)
+  console.log("length",length)
+  console.log("percentile",percentile)
+
   const element = (data, index, item) => (
     <View
       style={{
@@ -51,7 +59,7 @@ const CustomTable = ({
           }}
           style={{margin: 6}}
         />
-      ) : (
+      ) : tableElement === 'Action' ? (
         <View
           style={{
             flexDirection: 'row',
@@ -88,6 +96,83 @@ const CustomTable = ({
             />
           </TouchableOpacity>
         </View>
+      ) : (
+        tableElement === 'loadInAction' && (
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              // width: 2000,
+            }}>
+           <TouchableOpacity
+              onPress={() => null}
+              style={{
+                backgroundColor: 'skyblue',
+                padding: 10,
+                borderRadius: 10,
+                marginRight: 5,
+              }}>
+              <Text
+                style={{
+                  // ...form.formLabel,
+                  fontSize:
+                    height >= width
+                      ? scaleFont(12)
+                      : height <= 400
+                      ? scaleFont(12)
+                      : scaleFont(16),
+                  textAlign: 'center',
+                }}>
+                View
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => null}
+              style={{
+                backgroundColor: 'green',
+                padding: 10,
+                borderRadius: 10,
+                marginRight: 5,
+              }}>
+              <Text
+                style={{
+                  // ...form.formLabel,
+                  fontSize:
+                    height >= width
+                      ? scaleFont(12)
+                      : height <= 400
+                      ? scaleFont(12)
+                      : scaleFont(16),
+                  textAlign: 'center',
+                }}>
+                Accept
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => null}
+              style={{
+                backgroundColor: 'red',
+                padding: 10,
+                borderRadius: 10,
+                marginRight: 5,
+              }}>
+              <Text
+                style={{
+                  // ...form.formLabel,
+                  fontSize:
+                    height >= width
+                      ? scaleFont(12)
+                      : height <= 400
+                      ? scaleFont(12)
+                      : scaleFont(16),
+                  textAlign: 'center',
+                }}>
+                Reject
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )
       )}
     </View>
   );
@@ -97,26 +182,54 @@ const CustomTable = ({
       borderStyle={{borderColor: 'transparent'}}
       style={{width: '100%', height: '100%', flex: 1}}>
       {/* <ScrollView horizontal={true} style={{width: '100%', marginLeft: 20}}> */}
-      <Row
+      {/* <Row
         data={tableHead}
         style={{...styles.head}}
         textStyle={styles.textHeader}
-      />
+      /> */}
+      <TableWrapper key = {1} style={styles.row}>
+        {tableHead.map((key, i) => {
+          console.log("tableHead",key)
+          return (
+            <Cell
+              style={{
+                overflow: 'hidden',
+                width:
+                key === 'Action' && tableElement === 'loadInAction'? `${actionPercentile}%` : `${percentile}%`,
+              }}
+              key={i}
+              data={key}
+              textStyle={{
+                ...form.formLabel,
+                fontSize:
+                  height >= width
+                    ? scaleFont(12)
+                    : height <= 400
+                    ? scaleFont(12)
+                    : scaleFont(16),
+                margin: 6,
+                textAlign: 'center',
+              }}
+            />
+          );
+        })}
+      </TableWrapper>
+
       {/* </ScrollView> */}
       <ScrollView style={{flex: 1}}>
         {rowData.map((item, index) => (
           <TableWrapper key={index} style={styles.row}>
             {Object.keys(item).map((key, subIndex) => {
+              // console.log('key', key);
               return (
                 <>
                   <Cell
                     style={{
                       overflow: 'hidden',
                       // height: '10%',
-                      width:
-                        key === 'description'
-                          ? `${percentile}%`
-                          : `${percentile}%`,
+                      justifyContent: 'center',
+                         width:
+                key === filterElement && tableElement === 'loadInAction' ? `${actionPercentile}%` : `${percentile}%`,
                     }}
                     key={subIndex}
                     data={

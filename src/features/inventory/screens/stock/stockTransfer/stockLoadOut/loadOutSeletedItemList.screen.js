@@ -27,7 +27,7 @@ const tableData = [
     select: false,
   },
 ];
-const columnNames = ['', 'Description', 'Type', 'UOM', 'Qty'];
+const columnNames = ['Action', 'Description', 'Type', 'UOM', 'Qty'];
 const LoadOutSelectedItemListSreen = ({navigation}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [category, setCategory] = useState('delete');
@@ -287,7 +287,7 @@ const LoadOutSelectedItemListSreen = ({navigation}) => {
         <CustomTable
           tableHead={columnNames}
           rowData={tableData}
-          tableElement="action"
+          tableElement="Action"
           filterElement="id"
           setToggleCheckBox={openModal}
         />

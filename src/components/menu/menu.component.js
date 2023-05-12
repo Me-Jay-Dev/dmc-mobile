@@ -58,7 +58,10 @@ const MenuItem = ({isFrom, closeMenu, navigation}) => {
   return (
     <>
       {isFrom === 'Inventory'}
-      <Menu.Item onPress={() => {}} title="Stock Load-In" />
+      <Menu.Item onPress={() => {
+          navigation.navigate('LoadIn', {screen: 'StockLoadIn'});
+          closeMenu();
+        }} title="Stock Load-In" />
       <Menu.Item
         onPress={() => {
           navigation.navigate('LoadOut', {screen: 'StockLoadOut'});
