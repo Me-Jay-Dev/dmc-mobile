@@ -20,7 +20,7 @@ import StockItemListScreen from '../features/inventory/screens/stock/stockItemLi
 import StockLoadOutScreen from '../features/inventory/screens/stock/stockTransfer/stockLoadOut/stockLoadOut.screen';
 import LoadOutSelectedItemListSreen from '../features/inventory/screens/stock/stockTransfer/stockLoadOut/loadOutSeletedItemList.screen';
 import StockLoadInScreen from '../features/inventory/screens/stock/stockTransfer/stockLoadIn/stockLoadIn.screen';
-
+import { toastAlert } from '../utils/utils';
 const Stack = createStackNavigator();
 
 const Request = () => (
@@ -97,55 +97,7 @@ const Request = () => (
     <Stack.Screen
       name="StockSelectedItemList"
       component={StockSelectedItemListScreen}
-      // options={({navigation, route}) => ({
-      //   headerShown: true,
-      //   headerStyle: {
-      //     backgroundColor: '#f4511e',
-      //   },
-      //   headerRight: () => (
-      //     <View
-      //       style={{
-      //         flex: 1,
-      //         flexDirection: 'row',
-      //         alignItems: 'center',
-      //         alignContent: 'space-between',
-      //         backgroundColor: 'yellow',
-      //         justifyContent: 'space-between',
-      //       }}>
-      //       <Text
-      //         style={{
-      //           fontSize: 20,
-      //           fontWeight: '500',
-      //           textAlign: 'center',
-      //         }}>
-      //         Submit
-      //       </Text>
-      //       <Button
-      //         mode="contained"
-      //         onPress={() => null}
-      //         contentStyle={{
-      //           alignSelf: 'center',
-      //           textAlignVertical: 'center',
-      //           textAlign: 'center',
-      //         }}
-      //         labelStyle={{
-      //           alignSelf: 'center',
-      //           textAlignVertical: 'center',
-      //           textAlign: 'center',
-      //           fontSize: 20,
-      //         }}
-      //         style={{
-      //           alignSelf: 'center',
-      //           textAlignVertical: 'center',
-      //           textAlign: 'center',
-
-      //           backgroundColor: 'black',
-      //         }}>
-      //         Submit
-      //       </Button>
-      //     </View>
-      //   ),
-      // })}
+     
       options={({navigation, route}) => ({
         headerShown: true,
 
@@ -214,9 +166,10 @@ const Request = () => (
             }}>
             <Button
               mode="contained"
-              onPress={() =>
+              onPress={() =>{
+
                 navigation.navigate('Inventory', {isStockTransfer: false})
-              }
+              }}
               labelStyle={{
                 fontSize: 20,
               }}

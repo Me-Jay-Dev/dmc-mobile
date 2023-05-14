@@ -1,4 +1,13 @@
-import {ScrollView, StyleSheet, Text, View, Modal, Image,TouchableWithoutFeedback,TouchableOpacity} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  Image,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import CustomDatePicker from '../datepicker/datepicker.component';
 import RNPickerSelect from 'react-native-picker-select-gian';
@@ -19,12 +28,12 @@ const FilterData = ({
   selectedView,
   setSelectedView,
   isOpenView,
-  setIsOpenView
+  setIsOpenView,
 }) => {
   console.log('height', height);
   console.log('width', width);
   const fruits = ['Stock Load In', 'Stock Load Out', 'Panel Transfer'];
-  
+
   const onSelectionsChange = selectedFruits => {
     console.log('selectedFruits', selectedFruits);
     setSelectedView(selectedFruits);
@@ -60,6 +69,7 @@ const FilterData = ({
               }}
             />
           </View>
+
           <View style={{...globalStyles.rowDirection, marginRight: 20}}>
             <Text style={{...form.formLabel}}>Date To:</Text>
             <CustomDatePicker
@@ -68,40 +78,63 @@ const FilterData = ({
             />
           </View>
 
-         {isStockTransfer && ( <View style={{...globalStyles.rowDirection, marginRight: 20}}>
-            <Text style={{...form.formLabel}}>View By:</Text>
-            <TouchableOpacity style={{flexDirection:'row'}} onPress={() => setIsOpenView(true)}>
-            {
-            selectedView.length === 0 || selectedView.length === fruits.length ? (
-              <Text style={{...form.formLabel, borderBottomWidth:1,marginHorizontal:5}}>All</Text>
-              ):   selectedView.map(view => 
-              <Text style={{...form.formLabel,marginHorizontal:5}}>{view.label}, </Text>
-            )
-            }
-        </TouchableOpacity >
-            <Modal animationType="slide" transparent={true} visible={isOpenView}>
-            <TouchableWithoutFeedback onPress={() => setIsOpenView(false)}>
-
-              <View style={styles.centeredView}>
-                <View style={styles.mainContainer}>
-                  <View
+          {isStockTransfer && (
+            <View style={{...globalStyles.rowDirection, marginRight: 20}}>
+              <Text style={{...form.formLabel}}>View By:</Text>
+              <TouchableOpacity
+                style={{flexDirection: 'row'}}
+                onPress={() => setIsOpenView(true)}>
+                {selectedView.length === 0 ||
+                selectedView.length === fruits.length ? (
+                  <Text
                     style={{
-                      ...styles.modalShadow2,
+                      ...form.formLabel,
+                      borderBottomWidth: 1,
+                      marginHorizontal: 5,
                     }}>
-                      <Text style={{alignSelf:'flex-end',margin:10,fontSize:20}}>X</Text>
-                    <SelectMultiple
-                      items={fruits}
-                      renderLabel={renderLabel}
-                      selectedItems={selectedView}
-                      onSelectionsChange={onSelectionsChange}
-                    />
+                    All
+                  </Text>
+                ) : (
+                  selectedView.map(view => (
+                    <Text style={{...form.formLabel, marginHorizontal: 5}}>
+                      {view.label},{' '}
+                    </Text>
+                  ))
+                )}
+              </TouchableOpacity>
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={isOpenView}>
+                <TouchableWithoutFeedback onPress={() => setIsOpenView(false)}>
+                  <View style={styles.centeredView}>
+                    <View style={styles.mainContainer}>
+                      <View
+                        style={{
+                          ...styles.modalShadow2,
+                        }}>
+                        <Text
+                          style={{
+                            alignSelf: 'flex-end',
+                            margin: 10,
+                            fontSize: 20,
+                          }}>
+                          X
+                        </Text>
+                        <SelectMultiple
+                          items={fruits}
+                          renderLabel={renderLabel}
+                          selectedItems={selectedView}
+                          onSelectionsChange={onSelectionsChange}
+                        />
+                      </View>
+                    </View>
                   </View>
-                </View>
-              </View>
-              </TouchableWithoutFeedback>
+                </TouchableWithoutFeedback>
+              </Modal>
+            </View>
+          )}
 
-            </Modal>
-          </View>)}
           <View style={{...globalStyles.rowDirection, marginRight: 20}}>
             <Text style={{...form.formLabel}}>Sort By:</Text>
             <RNPickerSelect
@@ -114,6 +147,7 @@ const FilterData = ({
               style={pickerSelectStyles}
             />
           </View>
+          
           <View style={{...globalStyles.rowDirection, marginRight: 20}}>
             <Text style={{...form.formLabel}}>Sort By:</Text>
             <RNPickerSelect

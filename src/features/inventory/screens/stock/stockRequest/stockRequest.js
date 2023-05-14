@@ -182,20 +182,7 @@ const StockRequestScreen = () => {
         tableElement={'checkbox'}
         setToggleCheckBox={checkItem}
       />
-      {/* <DataTable
-        onRowSelect={row => checkItem(row)}
-        data={item} // list of objects
-        colNames={columnNames} //List of Strings
-        colSettings={columnSettings} //List of Objects
-        noOfPages={1} //number
-        backgroundColor={'rgb(249,249,249)'} //Table Background Color
-        headerLabelStyle={{
-          alignSelf: 'center',
-          color: 'black',
-          fontSize: height <= 400 ? scaleFont(15) : scaleFont(20),
-          fontWeight: 'bold',
-        }} //Text Style Works
-      /> */}
+    
     </View>
   );
 };

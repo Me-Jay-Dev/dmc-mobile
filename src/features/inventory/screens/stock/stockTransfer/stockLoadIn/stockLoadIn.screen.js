@@ -70,8 +70,6 @@ const StockLoadInScreen = () => {
     setSelectedItem(newCheck);
   };
 
-//   const searchDescription = searchText => {
-//     console.log('selectedItem', selectedItem);
 
 //     let selectedItems = selectedItem;
 
@@ -102,13 +100,7 @@ const StockLoadInScreen = () => {
         ...globalStyles.tableContainer,
         backgroundColor: 'rgb(249,249,249)',
       }}>
-      {/* <Search
-        setText={setText}
-        text={text}
-        searchDescription={searchDescription}
-        selectedItem={selectedItem}
-        isViewCount={false}
-      /> */}
+   
       <CustomTable
         tableHead={columnNames}
         rowData={item}
