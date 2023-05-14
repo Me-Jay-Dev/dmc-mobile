@@ -1,11 +1,8 @@
 import {StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
-import DataTable, {COL_TYPES} from 'react-native-datatable-component';
-import {height, scaleFont, width, windowWidth} from '../../../utils/utils';
-import {form, globalStyles} from '../../../utils/styles';
+import React from 'react';
+import { globalStyles} from '../../../utils/styles';
 import CustomTable from '../../../components/customTable/customTable.component';
-import {useDispatch, useSelector} from 'react-redux';
-import {getAllItems} from '../../../services/actions/items.action';
+import { useSelector} from 'react-redux';
 
 const tableData = [
   {
@@ -224,32 +221,7 @@ const columnNames = [
 ];
 
 const InventoryScreen = () => {
-  // console.log('width', width);
-  // console.log('heigt', height);
-  // const dispatch = useDispatch();
-  // const token = useSelector(state => state.authReducer.user_detail.token);
-  // const requested_by = useSelector(
-  //   state => state.authReducer.user_detail.user.id,
-  // );
-  // const {id, subscription_id} = useSelector(
-  //   state => state.authReducer.user_detail.device,
-  // );
-
   const items = useSelector(state => state.itemsReducers.item_list);
-
-  console.log('items', items);
-  // useEffect(() => {
-  //   dispatch(
-  //     getAllItems({
-  //       token: token,
-  //       data: {
-  //         requested_by: requested_by,
-  //         subscription_id: subscription_id,
-  //         device_id: id,
-  //       },
-  //     }),
-  //   );
-  // }, []);
 
   return (
     <View

@@ -21,7 +21,7 @@ const toastConfig = {
   success: props => (
     <BaseToast
       {...props}
-      style={{borderLeftColor: 'pink'}}
+      style={{borderLeftColor: 'pink',width: '100%'}}
       contentContainerStyle={{paddingHorizontal: 15}}
       text1Style={{
         fontSize:
@@ -54,6 +54,7 @@ const toastConfig = {
             : height <= 400
             ? scaleFont(16)
             : scaleFont(22),
+
       }}
       text2Style={{
         fontSize:
@@ -63,6 +64,8 @@ const toastConfig = {
             ? scaleFont(14)
             : scaleFont(20),
       }}
+      style={{width: '50%'}}
+
     />
   ),
 };
