@@ -39,7 +39,7 @@ const CustomDrawer = props => {
             padding: 2,
           }}>
           <Image
-            style={{width: width * 0.15, height: height * 0.1}}
+            style={{width: width * 0.20, height: height * 0.15}}
             source={require('../../../assets/icon.png')}
           />
         </View>

@@ -13,14 +13,15 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import RightButton from '../components/headerRight/rightButton.component';
 import StockSelectedItemListScreen from '../features/inventory/screens/stock/stockRequest/stockSelectedItemList.screen';
 import {Button} from 'react-native-paper';
-import {form} from '../utils/styles';
+import {form, globalStyles} from '../utils/styles';
 import CustomMenu from '../components/menu/menu.component';
 import StockRequestScreen from '../features/inventory/screens/stock/stockRequest/stockRequest';
 import StockItemListScreen from '../features/inventory/screens/stock/stockItemList';
 import StockLoadOutScreen from '../features/inventory/screens/stock/stockTransfer/stockLoadOut/stockLoadOut.screen';
 import LoadOutSelectedItemListSreen from '../features/inventory/screens/stock/stockTransfer/stockLoadOut/loadOutSeletedItemList.screen';
 import StockLoadInScreen from '../features/inventory/screens/stock/stockTransfer/stockLoadIn/stockLoadIn.screen';
-import { toastAlert } from '../utils/utils';
+import {toastAlert} from '../utils/utils';
+import RcpScreen from '../features/rcp/screens/rcp.screen';
 const Stack = createStackNavigator();
 
 const Request = () => (
@@ -29,6 +30,13 @@ const Request = () => (
       name="StockRequest"
       component={StockRequestScreen}
       options={({navigation, route}) => ({
+        headerStyle: {
+          backgroundColor: '#f8f8f8',
+        },
+        headerTintColor: '#000',
+        headerTitleStyle: {
+          fontWeight: '500',
+        },
         headerShown: true,
         headerTitle: '',
         headerLeft: () => (
@@ -38,7 +46,7 @@ const Request = () => (
               alignItems: 'center',
               marginLeft: 10,
             }}>
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               onPress={() =>
                 navigation.navigate('StockItemList', {isStockTransfer: false})
               }>
@@ -52,11 +60,10 @@ const Request = () => (
                   alignSelf: 'center',
                 }}
               />
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: '500',
+                ...globalStyles.headerTitleText,
               }}>
               Select Request
             </Text>
@@ -71,13 +78,11 @@ const Request = () => (
             }}>
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: '500',
-                textAlign: 'center',
+                ...globalStyles.headerTitleText,
               }}>
               Next
             </Text>
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               onPress={() => navigation.navigate('StockSelectedItemList')}>
               <MaterialCommunityIcons
                 name="arrow-right"
@@ -89,7 +94,7 @@ const Request = () => (
                   alignSelf: 'center',
                 }}
               />
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
           </View>
         ),
       })}
@@ -97,8 +102,14 @@ const Request = () => (
     <Stack.Screen
       name="StockSelectedItemList"
       component={StockSelectedItemListScreen}
-     
       options={({navigation, route}) => ({
+        headerStyle: {
+          backgroundColor: '#f8f8f8',
+        },
+        headerTintColor: '#000',
+        headerTitleStyle: {
+          fontWeight: '500',
+        },
         headerShown: true,
 
         headerTitle: () => (
@@ -114,14 +125,18 @@ const Request = () => (
               <View
                 style={{
                   marginLeft: 10,
-                  width: 40,
-                  height: 40,
-                  borderWidth: 0.5,
+                  marginLeft: 10,
                   borderRadius: 10,
                   alignItems: 'center',
                   justifyContent: 'center',
+                  ...globalStyles.filterContainter,
+                  width: 40,
+                  height: 40,
+                  backgroundColor: '#f8f8f8',
                 }}>
-                <Text style={{fontSize: 20}}>68</Text>
+                <Text style={{fontSize: 20, backgroundColor: '#f8f8f8'}}>
+                  68
+                </Text>
               </View>
             </View>
           </View>
@@ -133,7 +148,7 @@ const Request = () => (
               alignItems: 'center',
               marginLeft: 10,
             }}>
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               onPress={() =>
                 navigation.navigate('StockRequest', {isStockTransfer: false})
               }>
@@ -147,11 +162,10 @@ const Request = () => (
                   alignSelf: 'center',
                 }}
               />
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: '500',
+                ...globalStyles.headerTitleText,
               }}>
               Selected Item
             </Text>
@@ -166,15 +180,15 @@ const Request = () => (
             }}>
             <Button
               mode="contained"
-              onPress={() =>{
-
-                navigation.navigate('Inventory', {isStockTransfer: false})
+              onPress={() => {
+                navigation.navigate('Inventory', {isStockTransfer: false});
               }}
               labelStyle={{
                 fontSize: 20,
               }}
               style={{
-                backgroundColor: 'black',
+                ...globalStyles.headerTitleText,
+                backgroundColor:'black',
               }}>
               Submit
             </Button>
@@ -195,6 +209,13 @@ const LoadIn = () => (
       name="StockLoadIn"
       component={StockLoadInScreen}
       options={({navigation, route}) => ({
+        headerStyle: {
+          backgroundColor: '#f8f8f8',
+        },
+        headerTintColor: '#000',
+        headerTitleStyle: {
+          fontWeight: '500',
+        },
         headerShown: true,
         headerTitle: '',
         headerLeft: () => (
@@ -204,7 +225,7 @@ const LoadIn = () => (
               alignItems: 'center',
               marginLeft: 10,
             }}>
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               onPress={() =>
                 navigation.navigate('StockItemList', {isStockTransfer: false})
               }>
@@ -218,11 +239,10 @@ const LoadIn = () => (
                   alignSelf: 'center',
                 }}
               />
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: '500',
+                ...globalStyles.headerTitleText,
               }}>
               StockLoadIn
             </Text>
@@ -237,7 +257,6 @@ const LoadIn = () => (
               marginRight: 10,
               padding: 10,
               borderRadius: 20,
-              backgroundColor: 'black',
             }}
             onPress={() => null}>
             <MaterialCommunityIcons
@@ -247,18 +266,13 @@ const LoadIn = () => (
               style={{
                 // lineHeight: horizontalScale(50),
                 alignSelf: 'center',
-                color: 'white',
-                marginLeft:10
+                color: 'black',
+                marginLeft: 10,
               }}
             />
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: '500',
-                color: 'white',
-                textAlign: 'center',
-                marginRight:10
-
+                ...globalStyles.headerTitleText,
               }}>
               SYNC
             </Text>
@@ -274,6 +288,13 @@ const LoadOut = () => (
       name="StockLoadOut"
       component={StockLoadOutScreen}
       options={({navigation, route}) => ({
+        headerStyle: {
+          backgroundColor: '#f8f8f8',
+        },
+        headerTintColor: '#000',
+        headerTitleStyle: {
+          fontWeight: '500',
+        },
         headerShown: true,
         headerTitle: '',
         headerLeft: () => (
@@ -283,7 +304,7 @@ const LoadOut = () => (
               alignItems: 'center',
               marginLeft: 10,
             }}>
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               onPress={() =>
                 navigation.navigate('StockItemList', {isStockTransfer: false})
               }>
@@ -297,11 +318,10 @@ const LoadOut = () => (
                   alignSelf: 'center',
                 }}
               />
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: '500',
+                ...globalStyles.headerTitleText,
               }}>
               Select LoadOut
             </Text>
@@ -322,7 +342,7 @@ const LoadOut = () => (
               }}>
               Next
             </Text>
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               onPress={() => navigation.navigate('LoadOutSelectedItemList')}>
               <MaterialCommunityIcons
                 name="arrow-right"
@@ -334,7 +354,7 @@ const LoadOut = () => (
                   alignSelf: 'center',
                 }}
               />
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
           </View>
         ),
       })}
@@ -343,6 +363,13 @@ const LoadOut = () => (
       name="LoadOutSelectedItemList"
       component={LoadOutSelectedItemListSreen}
       options={({navigation, route}) => ({
+        headerStyle: {
+          backgroundColor: '#f8f8f8',
+        },
+        headerTintColor: '#000',
+        headerTitleStyle: {
+          fontWeight: '500',
+        },
         headerShown: true,
         headerTitle: '',
         headerLeft: () => (
@@ -352,7 +379,7 @@ const LoadOut = () => (
               alignItems: 'center',
               marginLeft: 10,
             }}>
-            <TouchableWithoutFeedback
+            <TouchableOpacity
               onPress={() =>
                 navigation.navigate('StockItemList', {isStockTransfer: false})
               }>
@@ -366,11 +393,10 @@ const LoadOut = () => (
                   alignSelf: 'center',
                 }}
               />
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: '500',
+                ...globalStyles.headerTitleText,
               }}>
               Selected LoadOut
             </Text>
@@ -391,6 +417,13 @@ const AppNavigator = () => (
       component={MainTabs}
       options={{
         headerShown: false,
+        headerStyle: {
+          backgroundColor: '#f8f8f8',
+        },
+        headerTintColor: '#000',
+        headerTitleStyle: {
+          fontWeight: '500',
+        },
       }}
     />
     <Stack.Screen
@@ -398,6 +431,13 @@ const AppNavigator = () => (
       component={StockItemListScreen}
       options={{
         headerShown: true,
+        headerStyle: {
+          backgroundColor: '#f8f8f8',
+        },
+        headerTintColor: '#000',
+        headerTitleStyle: {
+          fontWeight: '500',
+        },
       }}
     />
     <Stack.Screen

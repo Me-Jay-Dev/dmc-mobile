@@ -1,10 +1,14 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {Appearance, Button, Text} from 'react-native';
+import {Appearance, Button, Text, TouchableOpacity} from 'react-native';
 import HomeScreen from '../features/home/screens/home.screen';
 import TabBarIcon from '../components/appdrawer/TabBarIcon';
 import InventoryScreen from '../features/inventory/screens/inventory.screen';
 import CustomMenu from '../components/menu/menu.component';
 import CustomDrawer from '../components/appdrawer/CustomDrawer';
+import RcpScreen from '../features/rcp/screens/rcp.screen';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {form} from '../utils/styles';
+
 const Tabs = createDrawerNavigator();
 const MainTabs = () => {
   const {isDarkmode} = Appearance.getColorScheme() === 'dark';
@@ -14,10 +18,10 @@ const MainTabs = () => {
       backBehavior="initialRoute"
       screenOptions={{
         headerShown: true,
-        tabBarStyle: {
-          borderTopColor: isDarkmode ? themeColor.dark100 : '#c0c0c0',
-          backgroundColor: isDarkmode ? themeColor.dark200 : '#ffffff',
+        drawerStyle: {
+          backgroundColor: '#f8f8f8',
         },
+        
       }}
       drawerContent={props => <CustomDrawer {...props} />}>
       {/* these icons using Ionicons */}
@@ -25,6 +29,13 @@ const MainTabs = () => {
         name="Home"
         component={HomeScreen}
         options={{
+          headerStyle: {
+            backgroundColor: '#f8f8f8',
+          },
+          headerTintColor: '#000000',
+          headerTitleStyle: {
+            fontWeight: '500',
+          },
           drawerIcon: ({focused, size}) => (
             <TabBarIcon focused={focused} icon={'md-home-outline'} />
           ),
@@ -45,15 +56,43 @@ const MainTabs = () => {
           // ),
         }}
       />
-      {/* <Tabs.Screen
+      <Tabs.Screen
         name="RCP"
-        component={Profile}
+        component={RcpScreen}
         options={{
+          headerStyle: {
+            backgroundColor: '#f8f8f8',
+          },
+          headerTintColor: '#000000',
+          headerTitleStyle: {
+            fontWeight: '500',
+          },
           drawerIcon: ({focused, size}) => (
             <TabBarIcon focused={focused} icon={'md-location-outline'} />
           ),
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={null}
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                paddingHorizontal: 10,
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginVertical: 5,
+                marginRight: 10,
+                borderRadius: 20,
+              }}>
+              <MaterialCommunityIcons
+                name="walk"
+                size={24}
+                style={{color: 'black'}}
+              />
+              <Text style={{...form.formLabel, color: '#00000'}}>Walk In</Text>
+            </TouchableOpacity>
+          ),
         }}
-      /> */}
+      />
       {/* <Tabs.Screen
         name="Transaction"
         component={Profile}
@@ -67,8 +106,15 @@ const MainTabs = () => {
         name="Inventory"
         component={InventoryScreen}
         options={({navigation}) => ({
+          headerStyle: {
+            backgroundColor: '#f8f8f8',
+          },
+          headerTintColor: '#000',
+          headerTitleStyle: {
+            fontWeight: '500',
+          },
           drawerIcon: ({focused, size}) => (
-            <TabBarIcon focused={focused} icon={'md-folder-outline'} />
+            <TabBarIcon focused={focused} icon={'md-folder-outline'} color='black'/>
           ),
           headerRight: () => <CustomMenu isFrom="Inventory" />,
         })}

@@ -60,7 +60,12 @@ const FilterData = ({
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <View style={{...globalStyles.rowDirection, marginRight: 20}}>
+          <View
+            style={{
+              ...globalStyles.rowDirection,
+              ...globalStyles.filterContainter,
+              marginRight: 20,
+            }}>
             <Text style={{...form.formLabel}}>Date From:</Text>
             <CustomDatePicker
               dateValue={dateFrom}
@@ -70,16 +75,26 @@ const FilterData = ({
             />
           </View>
 
-          <View style={{...globalStyles.rowDirection, marginRight: 20}}>
+          <View
+            style={{
+              ...globalStyles.rowDirection,
+              ...globalStyles.filterContainter,
+              marginRight: 20,
+            }}>
             <Text style={{...form.formLabel}}>Date To:</Text>
-            <CustomDatePicker
+           <CustomDatePicker
               dateValue={dateTo}
               setDateValue={value => setDateTo(value)}
             />
           </View>
 
           {isStockTransfer && (
-            <View style={{...globalStyles.rowDirection, marginRight: 20}}>
+            <View
+              style={{
+                ...globalStyles.rowDirection,
+                ...globalStyles.filterContainter,
+                marginRight: 20,
+              }}>
               <Text style={{...form.formLabel}}>View By:</Text>
               <TouchableOpacity
                 style={{flexDirection: 'row'}}
@@ -135,32 +150,46 @@ const FilterData = ({
             </View>
           )}
 
-          <View style={{...globalStyles.rowDirection, marginRight: 20}}>
+          <View
+            style={{
+              ...globalStyles.rowDirection,
+              ...globalStyles.filterContainter,
+              marginRight: 20,
+            }}>
             <Text style={{...form.formLabel}}>Sort By:</Text>
-            <RNPickerSelect
-              value={type}
-              onValueChange={value => setType(value)}
-              items={[
-                {label: 'Date', value: 'date'},
-                {label: 'Transaction No.', value: 'transactionNo'},
-              ]}
-              style={pickerSelectStyles}
-            />
+            <View style={{alignSelf: 'center'}}>
+              <RNPickerSelect
+                value={type}
+                onValueChange={value => setType(value)}
+                items={[
+                  {label: 'Date', value: 'date'},
+                  {label: 'Transaction No.', value: 'transactionNo'},
+                ]}
+                style={pickerSelectStyles}
+              />
+            </View>
           </View>
-          
-          <View style={{...globalStyles.rowDirection, marginRight: 20}}>
+
+          <View
+            style={{
+              ...globalStyles.rowDirection,
+              ...globalStyles.filterContainter,
+              marginRight: 20,
+            }}>
             <Text style={{...form.formLabel}}>Sort By:</Text>
-            <RNPickerSelect
-              fixAndroidTouchableBug={true}
-              disabled={false}
-              value={ascending}
-              onValueChange={value => setAscending(value)}
-              items={[
-                {label: 'Ascending', value: 'ascending'},
-                {label: 'Descending', value: 'decscending'},
-              ]}
-              style={pickerSelectStyles}
-            />
+            <View style={{alignSelf: 'center'}}>
+              <RNPickerSelect
+                // fixAndroidTouchableBug={true}
+                // disabled={false}
+                value={ascending}
+                onValueChange={value => setAscending(value)}
+                items={[
+                  {label: 'Ascending', value: 'ascending'},
+                  {label: 'Descending', value: 'decscending'},
+                ]}
+                style={pickerSelectStyles}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -180,20 +209,21 @@ const pickerSelectStyles = StyleSheet.create({
         : scaleFont(22),
     paddingVertical: 12,
     paddingHorizontal: 10,
-    marginTop: height >= width ? 10 : height <= 400 ? 0 : 10,
+    // marginTop: height >= width ? 10 : height <= 400 ? 0 : 10,
 
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 4,
     color: 'black',
     width: 150,
+    alignSelf: 'center',
     paddingRight: 30, // to ensure the text is never behind the icon
   },
   inputAndroid: {
     paddingLeft: 20,
     // marginTop: height >= width ? 10 : height <= 400 ? 0 : 10,
-    marginTop: scaleFont(10),
     borderWidth: 1,
+    alignSelf: 'center',
     borderColor: '#707070',
     borderStyle: 'solid',
     color: '#000000',

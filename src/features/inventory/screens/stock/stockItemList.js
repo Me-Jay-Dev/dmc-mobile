@@ -124,7 +124,7 @@ const StockItemListScreen = ({navigation, route}) => {
     console.log('isStockTransfer', isStockTransfer);
     navigation.setOptions({
       headerTitle: isStockTransfer ? 'Stock Transfer' : 'Stock Request',
-
+      
       headerRight: () =>
         isStockTransfer ? <CustomMenu isFrom="none" /> : <RightButton />,
     });
@@ -156,7 +156,8 @@ const StockItemListScreen = ({navigation, route}) => {
     <View
       style={{
         ...globalStyles.tableContainer,
-        backgroundColor: 'rgb(249,249,249)',
+        // backgroundColor: 'rgb(249,249,249)',
+        backgroundColor:'white'
       }}>
       <FilterData
         setDateFrom={setDateFrom}

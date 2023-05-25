@@ -4,21 +4,22 @@ import { form,globalStyles } from '../../../utils/styles'
 import RNPickerSelect from 'react-native-picker-select-gian';
 import {Button} from 'react-native-paper';
 import { height, scaleFont, width } from '../../../utils/utils';
-const DataForm = () => {
+const DataForm = ({navigation}) => {
   return (
     <View style={{width: '30%'}}>
-    <ScrollView contentContainerStyle={{flexGrow: 1}} >
+    <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor:"#fff"}} >
    
       <View style={{marginBottom: 20}}>
         <View
           style={{
-            backgroundColor: 'skyblue',
-            padding: 6,
-            borderBottomWidth: 1,
+            padding: 13 ,
+            borderBottomWidth: .25,
+            backgroundColor: '#f7f9fd',
           }}>
           <Text
             style={{
               ...form.formLabel,
+              backgroundColor: '#f7f9fd',
               fontWeight: 'bold',
               alignSelf: 'center',
             }}>
@@ -114,7 +115,6 @@ const DataForm = () => {
       <View style={{marginBottom: 20}}>
         <View
           style={{
-            backgroundColor: 'skyblue',
             padding: 6,
             borderBottomWidth: 1,
           }}>
@@ -239,10 +239,10 @@ const DataForm = () => {
           fontSize: 20,
         }}
         style={{
-          backgroundColor: 'black',
           alignSelf: 'center',
-          padding: 10,
-          marginBottom:10
+          padding: 5,
+          marginBottom:10,
+          backgroundColor:'black'
         }}>
         Submit
       </Button>
@@ -261,7 +261,6 @@ const styles = StyleSheet.create({
           : height <= 400
           ? scaleFont(12)
           : scaleFont(18),
-      backgroundColor: 'white',
       borderColor: '#707070',
       borderStyle: 'solid',
       borderRadius: 10,

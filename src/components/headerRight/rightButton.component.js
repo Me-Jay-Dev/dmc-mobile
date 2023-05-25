@@ -1,7 +1,8 @@
-import {StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
+import { globalStyles } from '../../utils/styles';
 
 const RightButton = () => {
   const navigation = useNavigation();
@@ -14,13 +15,11 @@ const RightButton = () => {
       }}>
       <Text
         style={{
-          fontSize: 20,
-          fontWeight: '500',
-          textAlign: 'center',
+         ...globalStyles.headerTitleText
         }}>
         Request
       </Text>
-      <TouchableWithoutFeedback
+      <TouchableOpacity
         onPress={() => navigation.navigate('Request',{screen:"StockRequest"})}>
         <MaterialCommunityIcons
           name="arrow-right"
@@ -32,7 +31,7 @@ const RightButton = () => {
             alignSelf: 'center',
           }}
         />
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     </View>
   );
 };

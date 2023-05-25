@@ -54,7 +54,6 @@ const LoginScreen = () => {
           style={{
             width: height >= 400 ? width * 0.5 : width * 0.3,
             height: height >= 400 ? width * 0.2 : width * 0.1,
-            // backgroundColor: 'red',
           }}
           source={require('../../../../assets/icon.png')}
         />
@@ -140,6 +139,7 @@ const LoginScreen = () => {
                     : height <= 400
                     ? scaleFont(14)
                     : scaleFont(20),
+                    fontWeight:'600'
               }}
               style={{
                 alignSelf: 'center',
@@ -147,7 +147,7 @@ const LoginScreen = () => {
                 textAlign: 'center',
                 width: height <= 400 ? width * 0.3 : width * 0.4,
                 padding: horizontalScale(10),
-                backgroundColor: 'black',
+                backgroundColor:'black'
               }}>
               Login
             </Button>
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: '#FFF',
+    backgroundColor:'white'
   },
 
   input: {
@@ -173,7 +173,6 @@ const styles = StyleSheet.create({
         : height <= 400
         ? scaleFont(14)
         : scaleFont(20),
-    backgroundColor: 'white',
     borderColor: '#707070',
     borderStyle: 'solid',
     borderWidth: horizontalScale(1),

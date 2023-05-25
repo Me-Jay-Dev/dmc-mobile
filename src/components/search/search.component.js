@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {TextInput} from 'react-native-paper';
-import {form} from '../../utils/styles';
+import {form, globalStyles} from '../../utils/styles';
 import SearchBar from 'react-native-dynamic-search-bar';
 import {height, scaleFont, width} from '../../utils/utils';
 
@@ -19,7 +19,8 @@ const Search = ({
         paddingLeft: 20,
         justifyContent: 'space-between',
         alignItems: 'center',
-        margin: 5,
+        padding: 10,
+        backgroundColor: '#f7f9fd',
       }}>
       <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
         {/* <TextInput
@@ -37,8 +38,16 @@ const Search = ({
           }}
         /> */}
         <SearchBar
-          style={{width: '70%', ...form.formLabel, borderRadius: 20}}
-          height={100}
+          style={{
+            width: '70%',
+            height:50,
+            ...form.formLabel,
+            borderRadius: 20,
+            elevation: 9,
+            shadowRadius: 3,
+            shadowOpacity: 0.2,
+            shadowOffset: {width: 0, height: 5},
+          }}
           fontSize={
             height >= width
               ? scaleFont(14)
@@ -61,19 +70,19 @@ const Search = ({
 
       {isViewCount && (
         <View
-          style={{marginRight: 50, flexDirection: 'row', alignItems: 'center'}}>
+          style={{ flexDirection: 'row', alignItems: 'center',paddingHorizontal:10}}>
           <Text style={{...form.formLabel, fontWeight: 'bold'}}>
             Item Selected:
           </Text>
           <View
             style={{
               marginLeft: 10,
-              width: 40,
-              height: 40,
-              borderWidth: 0.5,
               borderRadius: 10,
               alignItems: 'center',
               justifyContent: 'center',
+              ...globalStyles.filterContainter,
+              width: 40,
+              height: 40,
             }}>
             <Text style={{...form.formLabel}}>{selectedItem.length}</Text>
           </View>

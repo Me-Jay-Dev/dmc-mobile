@@ -38,10 +38,10 @@ const LoadOutSelectedItemListSreen = ({navigation}) => {
     <View
       style={{
         ...globalStyles.tableContainer,
-        backgroundColor: 'rgb(249,249,249)',
+        // backgroundColor: 'rgb(249,249,249)',
       }}>
       <View style={{flexDirection: 'row', flex: 1, width: '100%'}}>
-        <DataForm />
+        <DataForm navigation={navigation}/>
         <CustomTable
           tableHead={columnNames}
           rowData={tableData}
