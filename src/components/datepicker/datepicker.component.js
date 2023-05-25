@@ -32,6 +32,7 @@ const CustomDatePicker = ({dateValue, setDateValue, format = 'YYYY-MM-DD'}) => {
           style={{
             flexDirection: 'row',
             alignItems: 'center',
+            alignContent:'center',
             marginLeft: 10,
           }}>
           <Text
@@ -49,7 +50,7 @@ const CustomDatePicker = ({dateValue, setDateValue, format = 'YYYY-MM-DD'}) => {
             name="update"
             color={'black'}
             size={horizontalScale(20)}
-            style={{lineHeight: horizontalScale(50), marginLeft: 10}}
+            style={{ marginLeft: 10,alignSelf:'center'}}
           />
         </View>
       </TouchableOpacity>

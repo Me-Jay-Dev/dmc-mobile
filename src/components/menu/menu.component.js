@@ -19,7 +19,7 @@ const CustomMenu = ({isFrom}) => {
           <TouchableOpacity
             onPress={openMenu}
             style={{flex: 1, justifyContent: 'center', padding: 10}}>
-            <MaterialCommunityIcons name="dots-vertical" size={24} />
+            <MaterialCommunityIcons name="dots-vertical" size={24} color="black"/>
           </TouchableOpacity>
         }>
         <MenuItem

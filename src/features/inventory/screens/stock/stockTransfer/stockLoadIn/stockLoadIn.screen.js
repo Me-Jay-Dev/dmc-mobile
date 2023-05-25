@@ -98,7 +98,7 @@ const StockLoadInScreen = () => {
     <View
       style={{
         ...globalStyles.tableContainer,
-        backgroundColor: 'rgb(249,249,249)',
+        // backgroundColor: 'rgb(249,249,249)',
       }}>
    
       <CustomTable

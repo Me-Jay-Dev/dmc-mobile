@@ -88,7 +88,6 @@ const CustomTable = ({
               onPress={() => null}
               style={{
                 ...styles.loadInActionButton,
-                backgroundColor: 'skyblue',
               }}>
               <Text style={styles.loadInActionText}>View</Text>
             </TouchableOpacity>
@@ -96,7 +95,6 @@ const CustomTable = ({
               onPress={() => null}
               style={{
                 ...styles.loadInActionButton,
-                backgroundColor: 'green',
               }}>
               <Text style={styles.loadInActionText}>Accept</Text>
             </TouchableOpacity>
@@ -104,7 +102,6 @@ const CustomTable = ({
               onPress={() => null}
               style={{
                 ...styles.loadInActionButton,
-                backgroundColor: 'red',
               }}>
               <Text style={styles.loadInActionText}>Reject</Text>
             </TouchableOpacity>
@@ -116,24 +113,46 @@ const CustomTable = ({
   };
 
   return (
-    <Table
-      borderStyle={{borderColor: 'transparent'}}
-      style={{width: '100%', height: '100%', flex: 1}}>
-      <TableHeader
-        tableHead={tableHead}
-        tableElement={tableElement}
-        percentile={percentile}
-        actionPercentile={actionPercentile}
-      />
-      <TableCell
-        rowData={rowData}
-        CellElement={CellElement}
-        filterElement={filterElement}
-        tableElement={tableElement}
-        actionPercentile={actionPercentile}
-        percentile={percentile}
-      />
-    </Table>
+    <View
+      style={{
+        flex: 1,
+        // margin:5,
+
+        // height: 60,
+        // elevation: 9,
+        // shadowRadius: 3,
+        // shadowOpacity: 0.2,
+        // margin:10,
+        // shadowOffset: {width: 0, height: 5},
+      }}>
+      <Table
+        borderStyle={{borderColor: 'transparent'}}
+        style={{
+          width: '100%',
+          height: '100%',
+          flex: 1,
+          // elevation: 1,
+          // shadowRadius: 1,
+          // shadowOpacity: 0.2,
+          // shadowOffset: { width: 0, height: 5 },
+          // alignSelf:'center'
+        }}>
+        <TableHeader
+          tableHead={tableHead}
+          tableElement={tableElement}
+          percentile={percentile}
+          actionPercentile={actionPercentile}
+        />
+        <TableCell
+          rowData={rowData}
+          CellElement={CellElement}
+          filterElement={filterElement}
+          tableElement={tableElement}
+          actionPercentile={actionPercentile}
+          percentile={percentile}
+        />
+      </Table>
+    </View>
   );
 };
 

@@ -41,12 +41,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10,
     width: '100%',
-    overflow: 'hidden',
-    borderColor: 'gray',
+    // overflow: 'hidden',
+    backgroundColor: '#f7f9fd',
     borderBottomWidth: 0.5,
   },
   text: {
     ...form.formLabel,
+    fontWeight:'bold',
     fontSize:
       height >= width
         ? scaleFont(12)

@@ -15,14 +15,19 @@ const TableCell = ({
   return (
     <ScrollView style={{flex: 1}}>
       {rowData.map((item, index) => (
-        <TableWrapper key={index} style={styles.row}>
+        <TableWrapper
+          key={index}
+          style={{
+            ...styles.row,
+            backgroundColor: `${index % 2 === 0 ? '#ffffff' : '#fafafa'}`,
+          }}>
           {Object.keys(item).map((key, subIndex) => {
             return (
               <>
                 <Cell
                   style={{
-                    overflow: 'hidden',
                     justifyContent: 'center',
+                    padding: 10,
                     width: `${
                       key === filterElement && tableElement === 'loadInAction'
                         ? actionPercentile
@@ -53,7 +58,6 @@ export default TableCell;
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    padding: 10,
     width: '100%',
     overflow: 'hidden',
     borderColor: 'gray',

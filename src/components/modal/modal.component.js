@@ -260,6 +260,7 @@ const deleteStyles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#FFFFFF80',
+
   },
   modalShadow2: {
     justifyContent: 'center',

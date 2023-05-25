@@ -11,7 +11,7 @@ export default props => {
       style={{marginBottom: 4}}
       size={24}
       color={
-        props.focused ? (isDarkmode ? 'red' : 'black') : 'rgb(143, 155, 179)'
+        props.focused ? (isDarkmode ? 'red' : '#4663ac') : 'rgb(143, 155, 179)'
       }
     />
   );

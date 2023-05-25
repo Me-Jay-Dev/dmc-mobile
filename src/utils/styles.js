@@ -132,17 +132,30 @@ export const form = StyleSheet.create({
 export const globalStyles = StyleSheet.create({
   tableContainer: {
     flex: 1,
-    // height: height >= width ? '80%' : height >= 400 ? '95%' : '80%',
-    // height: '100%',
-    backgroundColor: 'rgb(249,249,249)',
-    // padding: 20,
+    backgroundColor: 'white',
   },
   rowDirection: {
     flexDirection: 'row',
     alignItems: 'center',
     alignContent: 'center',
     justifyContent: 'space-between',
-    margin: 5,
-    backgroundColor: 'rgb(249,249,249)',
+    padding: 10,
+    backgroundColor: '#f7f9fd',
   },
+  headerTitleText: {
+    fontSize: 20,
+    fontWeight: '500',
+    color: 'black',
+  },
+  filterContainter:{
+    elevation: 9,
+    shadowRadius: 3,
+    shadowOpacity: 0.2,
+    shadowOffset: {width: 0, height: 5},
+    backgroundColor: '#f7f9fd',
+    borderRadius: 10,
+    marginVertical:10,
+    height:50,
+    alignSelf:'center'
+  }
 });

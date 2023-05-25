@@ -1,8 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import { globalStyles} from '../../../utils/styles';
+import {globalStyles} from '../../../utils/styles';
 import CustomTable from '../../../components/customTable/customTable.component';
-import { useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 const tableData = [
   {
@@ -227,7 +227,7 @@ const InventoryScreen = () => {
     <View
       style={{
         ...globalStyles.tableContainer,
-        backgroundColor: 'rgb(249,249,249)',
+      
       }}>
       <CustomTable
         tableHead={columnNames}

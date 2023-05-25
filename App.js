@@ -9,19 +9,16 @@ import {
 } from 'react-native';
 import React from 'react';
 import Toast, {BaseToast, ErrorToast} from 'react-native-toast-message';
-import {Provider as PaperProvider} from 'react-native-paper';
 import {Navigation} from './src/navigation';
-import {Provider} from 'react-redux';
-import configureStore from './src/services/reducers/index';
-import rootSaga from './src/services/saga';
+
 import {height, scaleFont, width} from './src/utils/utils';
-const {store, runSaga} = configureStore();
-runSaga(rootSaga);
+import { useSelector } from 'react-redux';
+
 const toastConfig = {
   success: props => (
     <BaseToast
       {...props}
-      style={{borderLeftColor: 'pink',width: '100%'}}
+      style={{borderLeftColor: 'pink', width: '100%'}}
       contentContainerStyle={{paddingHorizontal: 15}}
       text1Style={{
         fontSize:
@@ -54,7 +51,6 @@ const toastConfig = {
             : height <= 400
             ? scaleFont(16)
             : scaleFont(22),
-
       }}
       text2Style={{
         fontSize:
@@ -65,7 +61,6 @@ const toastConfig = {
             : scaleFont(20),
       }}
       style={{width: '50%'}}
-
     />
   ),
 };
@@ -79,17 +74,22 @@ const toastConfig = {
 //   },
 // };
 const App = () => {
+  const is_authenticated = useSelector(
+    state => state.authReducer.is_authenticated,
+  );
+  const bgColor = !is_authenticated ? '#f8f8f8' : 'white'
   LogBox.ignoreLogs(['Invalid prop textStyle of type array supplied to Cell']);
   return (
-    <Provider store={store}>
-      <PaperProvider>
+    <>
         <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
-          <StatusBar backgroundColor="white" barStyle="dark-content" />
+          <StatusBar
+            backgroundColor={bgColor}
+            barStyle="dark-content"
+          />
           <Navigation />
         </SafeAreaView>
         <Toast config={toastConfig} visibilityTime={6000} position="top" />
-      </PaperProvider>
-    </Provider>
+        </>
   );
 };
 
